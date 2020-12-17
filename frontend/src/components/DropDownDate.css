@@ -1,0 +1,63 @@
+.dropdown-date {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropdown-date-column {
+  flex-direction: column;
+  width: 50%;
+}
+
+.years,
+.months {
+  height: 40px;
+}
+
+.years {
+  position: relative;
+  width: 70%;
+}
+.months {
+  position: relative;
+  width: 100%;
+}
+
+.error {
+  position: absolute;
+  left: 10;
+  bottom: -15px;
+  color: rgb(235, 120, 120);
+}
+
+select.filter {
+  background-color: rgba(6, 90, 146, 0.3);
+  width: 80% !important;
+  /* font-size: 1.3rem; */
+}
+
+/* Tablet and Laptops */
+@media (min-width: 600px) {
+  .years,
+  .months {
+    width: 100%;
+  }
+
+  .years select,
+  .months select {
+    width: 100%;
+  }
+
+  select.filter {
+    width: 50% !important;
+  }
+}
+
+/* Large Screens */
+@media (min-width: 900px) {
+}
+
+/* Extra Large Screens */
+@media (min-width: 1200px) {
+}

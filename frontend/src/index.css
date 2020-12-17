@@ -1,0 +1,106 @@
+/* Your css styling goes here */
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  background-color: #8bc6ec;
+  background-image: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%);
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+select {
+  padding-left: 0.5rem;
+  font-size: 1.4rem;
+  font-family: inherit;
+  width: 100%;
+  height: 40px;
+}
+
+select:focus {
+  outline: none;
+  border: 2px solid black;
+}
+
+/* Utilities */
+.container {
+  width: 100%;
+  min-height: calc(100vh - 40px);
+  margin: 0rem auto;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+  text-align: center;
+  position: relative;
+  padding: 2rem 0.5rem;
+}
+
+h1 {
+  font-size: 1.6rem;
+  /* text-transform: uppercase; */
+  letter-spacing: 2px;
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
+  /* margin-top: 2rem; */
+  text-align: left;
+}
+
+/* Tablet and Laptops */
+@media (min-width: 600px) {
+  .container {
+    width: 70%;
+    /* margin: 3rem auto; */
+    padding: 2rem;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  select {
+    width: 50%;
+    font-size: 1.6rem;
+  }
+}
+
+/* Large Screens */
+@media (min-width: 900px) {
+  .container {
+    width: 60%;
+    /* margin: 3rem auto; */
+  }
+  h1 {
+    font-size: 2.5rem;
+  }
+  select {
+    font-size: 1.7rem;
+  }
+}
+
+/* Extra Large Screens */
+@media (min-width: 1200px) {
+  .container {
+    width: 50%;
+    /* margin: 4rem auto; */
+    padding: 3rem;
+  }
+  h1 {
+    font-size: 2.7rem;
+    /* margin-top: 3rem; */
+  }
+  select {
+    font-size: 1.8rem;
+  }
+}

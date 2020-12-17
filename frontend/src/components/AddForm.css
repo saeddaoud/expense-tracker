@@ -1,0 +1,153 @@
+.add-form {
+  width: 90%;
+  background-color: rgba(6, 90, 146, 0.7);
+  /* background-color: #8bc6ec;
+  background-image: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%); */
+  position: fixed;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid black;
+  box-shadow: 5px 8px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  color: #eee;
+  padding: 1rem;
+}
+
+.close-btn {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 1.3rem;
+}
+
+.add-form__control {
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around; */
+  margin: 2rem;
+  color: #eee;
+  position: relative;
+  width: 80%;
+  height: 40px;
+}
+
+.add-form__control:last-child {
+  margin: 1rem;
+}
+
+.add-form__control-top {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  /* flex-direction: column; */
+  align-items: center;
+  /* flex-direction: row; */
+}
+
+.add-form__control input {
+  font-size: 1.3rem;
+  font-family: inherit;
+  padding: 1rem;
+  border: none;
+}
+
+/* .add-form__control input:focus {
+  border: 2px solid black;
+} */
+
+.control__label {
+  position: absolute;
+  top: -17px;
+  left: 0;
+  background-color: transparent;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.add-form__el {
+  width: 100%;
+  height: 40px;
+}
+
+.add-form__el:focus {
+  outline: none;
+  border: 2px solid black;
+}
+
+.add-form__el--select {
+  width: 100%;
+}
+
+.add-form__control .submit-btn {
+  padding: 0.5rem;
+  width: 100px;
+  display: block;
+  font-size: 1.3rem;
+  font-family: inherit;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.error {
+  position: absolute;
+  left: 5px;
+  bottom: -15px;
+  color: rgb(233, 60, 60);
+}
+
+.date-btn {
+  padding: 1rem 2rem;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1.3rem;
+}
+
+.control-top__select {
+  width: 50%;
+  position: relative;
+}
+
+/* Tablet and Laptops */
+@media (min-width: 600px) {
+  .add-form {
+    width: 70%;
+  }
+  .add-form__control-top {
+    width: 80%;
+  }
+  .add-form__control .submit-btn,
+  .add-form__control input {
+    font-size: 1.6rem;
+  }
+}
+
+/* Large Screens */
+@media (min-width: 900px) {
+  .add-form {
+    width: 60%;
+  }
+  .add-form__control .submit-btn,
+  .add-form__control input {
+    font-size: 1.7rem;
+  }
+}
+
+/* Extra Large Screens */
+@media (min-width: 1200px) {
+  .add-form {
+    width: 50%;
+  }
+  .add-form__control .submit-btn,
+  .add-form__control input {
+    font-size: 1.8rem;
+  }
+}

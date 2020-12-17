@@ -1,0 +1,148 @@
+.details-display-container {
+  width: calc(50% - 0.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid black;
+  box-shadow: 5px 8px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  /* margin: 0 0.2rem; */
+}
+.entry-year {
+  width: 100%;
+}
+
+.entry-year > span {
+  display: block;
+  width: 100%;
+  background-color: rgb(6, 81, 131);
+  color: white;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+}
+.entry-month > span {
+  display: block;
+  width: 100%;
+  background-color: rgb(7, 113, 184);
+  color: white;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+}
+.details-display-item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+
+.details-display-item .income {
+  color: rgb(33, 105, 33);
+}
+.details-display-item .expense {
+  color: rgb(136, 30, 30);
+}
+
+.right {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item__amount {
+  width: 70%;
+  text-align: right;
+}
+
+.options-btn {
+  color: #333;
+  position: relative;
+  cursor: pointer;
+}
+
+.actions {
+  position: relative;
+}
+
+.actions__menu {
+  width: 70px;
+  /* height: 40px; */
+  position: absolute;
+  top: 15px;
+  right: 5px;
+  background-color: rgba(6, 90, 146, 0.8);
+  /* background-image: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%); */
+  padding: 0.5rem;
+  border: 1px solid black;
+  border-radius: 10px;
+  color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.actions__menu ul {
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.actions__menu ul li {
+  width: 100%;
+  transition: 0.2s;
+  padding: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.actions__menu ul li:hover {
+  background-color: rgb(6, 81, 131);
+  color: white;
+}
+
+/* Tablet and Laptops */
+@media (min-width: 600px) {
+  .details-display-item {
+    font-size: 1.6rem;
+    padding: 1.1rem;
+  }
+  .actions__menu {
+    width: 80px;
+  }
+  .entry-year > span,
+  .entry-month > span {
+    font-size: 1.6rem;
+  }
+}
+
+/* Large Screens */
+@media (min-width: 900px) {
+  .details-display-item {
+    font-size: 1.7rem;
+    padding: 1.2rem;
+  }
+  .actions__menu {
+    width: 100px;
+  }
+  .entry-year > span,
+  .entry-month > span {
+    font-size: 1.7rem;
+  }
+}
+
+/* Extra Large Screens */
+@media (min-width: 1200px) {
+  .details-display-item {
+    font-size: 1.8rem;
+    padding: 1.4rem;
+  }
+  .entry-year > span,
+  .entry-month > span {
+    font-size: 1.8rem;
+  }
+}

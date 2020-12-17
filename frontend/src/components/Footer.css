@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+.footer {
+  height: 40px;
+  width: 100%;
+  background-color: rgb(6, 90, 146);
+  color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: 'Dancing Script', cursive;
+}
