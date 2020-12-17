@@ -1,0 +1,28 @@
+.navbar {
+  height: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgb(6, 90, 146);
+  color: #eee;
+}
+
+.menu {
+  width: 40%;
+  height: 100%;
+}
+
+.list {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.list a {
+  text-decoration: none;
+  color: #eee;
+  font-size: 1.3rem;
+}

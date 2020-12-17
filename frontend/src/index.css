@@ -7,6 +7,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  list-style: none;
 }
 
 html {
@@ -36,11 +37,41 @@ select:focus {
   border: 2px solid black;
 }
 
+.page {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  align-self: center;
+}
+
+.box {
+  border: 1px solid black;
+  box-shadow: 5px 10px 5px rgba(0, 0, 0, 0.5);
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+}
+
+.box--title {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1.7rem;
+}
+
+.box--par {
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+
 /* Utilities */
 .container {
   width: 100%;
-  min-height: calc(100vh - 40px);
+  min-height: calc(100vh - 80px);
   margin: 0rem auto;
+  display: flex;
   /* display: flex;
   flex-direction: column;
   justify-content: center;
