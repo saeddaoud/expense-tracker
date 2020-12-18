@@ -8,22 +8,26 @@ const HomeScreen = () => {
     <div className='page page--home'>
       <div className='welcome'>
         <h1>Welcome to EXTRA</h1>
+        <p>
+          <strong>
+            <em>Be in control of your finances.</em>{' '}
+          </strong>
+        </p>
       </div>
       <div className='message'>
         <p className='box box--par'>
           <strong>EXTRA</strong> is a user-friendly <strong>Ex</strong>pense{' '}
           <strong>TRA</strong>
           cker that allows you track your income and expenses, and set financial
-          goals, to be in control of your finances.
+          goals.
         </p>
       </div>
       <div className='guide'>
         <p>
-          It's free. All you need to start is to create an account to associate
-          your entries with it.
+          New user? <Link to='/register'>Sign up</Link> here
         </p>
         <p>
-          <Link to='/register'>Signup</Link> here
+          Already have an account? <Link to='/login'>Log in</Link> here
         </p>
       </div>
     </div>

@@ -3,14 +3,15 @@ import DetailsDisplay from '../components/DetailsDisplay';
 import SetAmount from '../components/SetAmount';
 import TotalDisplay from '../components/TotalDisplay';
 
+import './TransactionsScreen.css';
+
 const TransactionsScreen = () => {
   return (
-    <>
-      <h1>EXTRA: EXpense TRAcker</h1>
+    <div className='page page--transactions'>
       <TotalDisplay />
       <SetAmount />
       <DetailsDisplay />
-    </>
+    </div>
   );
 };
 

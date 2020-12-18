@@ -58,6 +58,8 @@
   font-family: inherit;
   padding: 1rem;
   border: none;
+  width: 100%;
+  height: 30px;
 }
 
 /* .add-form__control input:focus {
@@ -85,6 +87,7 @@
 
 .add-form__el--select {
   width: 100%;
+  height: 30px;
 }
 
 .add-form__control .submit-btn {
@@ -100,7 +103,7 @@
 .error {
   position: absolute;
   left: 5px;
-  bottom: -15px;
+  top: 35px;
   color: rgb(233, 60, 60);
 }
 

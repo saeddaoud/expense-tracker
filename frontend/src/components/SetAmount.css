@@ -1,6 +1,6 @@
 .set-amount .add-amount {
   position: absolute;
-  top: 15px;
+  top: 5px;
   right: 10px;
   /* transform: translateX(-50%); */
   background-color: transparent;
