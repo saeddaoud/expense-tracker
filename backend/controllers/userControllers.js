@@ -18,7 +18,7 @@ const authUser = asyncHandler(async (req, res, next) => {
         token: generateWebToken(foundUser._id),
       });
     } else {
-      res.status(400);
+      res.status(401);
       next(new Error('Invalid credentials'));
     }
   });
