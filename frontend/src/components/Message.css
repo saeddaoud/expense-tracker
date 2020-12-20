@@ -1,0 +1,14 @@
+.message {
+  /* position: absolute;
+  left: 0;
+  top: -10px; */
+  width: 100%;
+  font-size: 1.7rem;
+}
+
+.danger {
+  color: rgb(233, 60, 60);
+  background-color: rgb(32, 51, 65);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
