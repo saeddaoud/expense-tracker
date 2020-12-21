@@ -2,3 +2,11 @@
   margin-top: 2rem;
   font-size: 1.5rem;
 }
+
+.pass-error {
+  position: absolute;
+  left: 0;
+  top: 30px;
+  font-size: 1.3rem;
+  color: rgb(233, 60, 60);
+}

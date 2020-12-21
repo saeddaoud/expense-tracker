@@ -6,7 +6,10 @@ import { logout } from '../actions/userActions';
 import './NavBar.css';
 
 const NavBar = () => {
-  const { userInfo } = useSelector((state) => state.userLogin);
+  const { userInfo: userInfoLogin } = useSelector((state) => state.userLogin);
+  const { userInfo: userInforRegister } = useSelector(
+    (state) => state.userRegister
+  );
   const dispatch = useDispatch();
 
   const logoutHandler = () => {
@@ -24,7 +27,7 @@ const NavBar = () => {
             <Link to='/'>Home</Link>
           </li>
           <li>
-            {userInfo ? (
+            {userInfoLogin || userInforRegister ? (
               <Link to='/login' onClick={logoutHandler}>
                 Log out
               </Link>

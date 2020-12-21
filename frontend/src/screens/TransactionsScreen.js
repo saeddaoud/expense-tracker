@@ -7,11 +7,14 @@ import TotalDisplay from '../components/TotalDisplay';
 import './TransactionsScreen.css';
 
 const TransactionsScreen = ({ history }) => {
-  const { userInfo } = useSelector((state) => state.userLogin);
+  const { userInfo: userInfoLogin } = useSelector((state) => state.userLogin);
+  const { userInfo: userInfoRegister } = useSelector(
+    (state) => state.userRegister
+  );
 
   useEffect(() => {
-    if (!userInfo) history.push('/login');
-  }, [userInfo, history]);
+    if (!userInfoLogin && !userInfoRegister) history.push('/login');
+  }, [userInfoLogin, userInfoRegister, history]);
   return (
     <div className='page page--transactions'>
       <TotalDisplay />
