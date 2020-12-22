@@ -19,7 +19,14 @@ const transactionSchema = new Schema(
     type: {
       type: String,
       required: ['true', 'Please select transaction type'],
-      enum: ['income', 'expense', 'target'],
+    },
+    year: {
+      type: String,
+      require: true,
+    },
+    month: {
+      type: String,
+      require: true,
     },
   },
   {

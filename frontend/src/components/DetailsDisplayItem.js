@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteEntry, fetchEntry } from '../actions/entriesActions';
+import { deleteEntry, fetchEntry } from '../actions/transactionActions';
 import AddForm from './AddForm';
 
 import './DetailsDisplayItem.css';

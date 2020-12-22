@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterEntries } from '../actions/entriesActions';
+import { filterEntries } from '../actions/transactionActions';
 import DropDownDate from './DropDownDate';
 import './TotalDisplay.css';
 

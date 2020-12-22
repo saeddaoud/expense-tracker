@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 import BackDrop from './BackDrop';
 import './AddForm.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { addEntry, editEntry } from '../actions/entriesActions';
-import { v4 as uuid4 } from 'uuid';
-import { RESET_ENTRY } from '../constants.js/entriesConstants';
+import { addEntry, editEntry } from '../actions/transactionActions';
+import { RESET_ENTRY } from '../constants.js/transactionConstants';
 import DropDownDate from './DropDownDate';
 
 const AddForm = ({ setAddClicked }) => {
@@ -76,8 +75,7 @@ const AddForm = ({ setAddClicked }) => {
       } else {
         dispatch(
           addEntry({
-            id: uuid4(),
-            entryType,
+            type: entryType,
             title,
             amount,
             year,

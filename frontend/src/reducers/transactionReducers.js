@@ -1,12 +1,28 @@
 import {
-  ADD_ENTRY,
   DELETE_ENTRY,
   EDIT_ENTRY,
   FETCH_ENTRY,
   RESET_ENTRY,
   FILTER_BY_YEAR,
   SET_YEAR,
-} from '../constants.js/entriesConstants';
+  ADD_ENRTY_REQUEST,
+  ADD_ENRTY_SUCCESS,
+  ADD_ENRTY_FAIL,
+} from '../constants.js/transactionConstants';
+
+export const transactionAddReducer = (state = {}, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case ADD_ENRTY_REQUEST:
+      return { loading: true };
+    case ADD_ENRTY_SUCCESS:
+      return { loading: false, success: true, entry: payload };
+    case ADD_ENRTY_FAIL:
+      return { loading: false, error: payload };
+    default:
+      return state;
+  }
+};
 
 export const entriesListReducer = (
   state = { entries: [], entry: null, filtered: [], year: 'Year' },
@@ -14,8 +30,8 @@ export const entriesListReducer = (
 ) => {
   const { payload, type } = action;
   switch (type) {
-    case ADD_ENTRY:
-      return { ...state, entries: [payload, ...state.entries] };
+    // case ADD_ENTRY:
+    //   return { ...state, entries: [payload, ...state.entries] };
     case FETCH_ENTRY:
       return {
         ...state,
