@@ -40,12 +40,12 @@ const DetailsDisplayItem = ({
                 <div className='entry-month' key={monthEntry[0]}>
                   <span>{monthEntry[0]}</span>
                   {monthEntry[1].map((el) => (
-                    <div className='details-display-item' key={el.id}>
+                    <div className='details-display-item' key={el._id}>
                       <div className='item__title'>{el.title}</div>
                       <div className='right'>
                         <div
                           className={
-                            el.entryType === 'income'
+                            el.type === 'income'
                               ? 'item__amount income'
                               : 'item__amount expense'
                           }
@@ -57,18 +57,18 @@ const DetailsDisplayItem = ({
                             className='options-btn'
                             onClick={() => {
                               setActionsBtnClicked(!actionBtnClicked);
-                              setItemId(el.id);
+                              setItemId(el._id);
                             }}
                           >
                             <i className='fas fa-ellipsis-v'></i>
                           </div>
-                          {actionBtnClicked && el.id === itemId && (
+                          {actionBtnClicked && `${el._id}` === `${itemId}` && (
                             <div className='actions__menu'>
                               <ul>
-                                <li onClick={() => handleEditClick(el.id)}>
+                                <li onClick={() => handleEditClick(el._id)}>
                                   Edit
                                 </li>
-                                <li onClick={() => handleDeleteClick(el.id)}>
+                                <li onClick={() => handleDeleteClick(el._id)}>
                                   Delete
                                 </li>
                               </ul>

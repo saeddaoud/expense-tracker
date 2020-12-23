@@ -8,7 +8,24 @@ import {
   ADD_ENRTY_REQUEST,
   ADD_ENRTY_SUCCESS,
   ADD_ENRTY_FAIL,
+  ENTRIES_LIST_REQUEST,
+  ENTRIES_LIST_SUCCESS,
+  ENTRIES_LIST_FAIL,
 } from '../constants.js/transactionConstants';
+
+export const transactionsListReducer = (state = { entries: [] }, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case ENTRIES_LIST_REQUEST:
+      return { ...state, loading: true };
+    case ENTRIES_LIST_SUCCESS:
+      return { ...state, loading: false, success: true, entries: payload };
+    case ENTRIES_LIST_FAIL:
+      return { ...state, loading: false, error: payload };
+    default:
+      return state;
+  }
+};
 
 export const transactionAddReducer = (state = {}, action) => {
   const { type, payload } = action;

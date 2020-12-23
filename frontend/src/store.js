@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 import {
   entriesListReducer,
   transactionAddReducer,
+  transactionsListReducer,
 } from './reducers/transactionReducers';
 import { userLoginReducer, userRegisterReducer } from './reducers/userReducers';
 
@@ -14,6 +15,7 @@ const reducer = combineReducers({
   userRegister: userRegisterReducer,
   entriesList: entriesListReducer,
   transactionAdd: transactionAddReducer,
+  transactionsList: transactionsListReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')
