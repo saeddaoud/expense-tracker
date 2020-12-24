@@ -1,4 +1,8 @@
 import axios from 'axios';
+import {
+  EDIT_ENRTY_RESET,
+  ENTRIES_LIST_RESET,
+} from '../constants.js/transactionConstants';
 
 import {
   USER_LOGIN_FAIL,
@@ -78,6 +82,8 @@ export const registerUser = ({ name, email, password }) => async (dispatch) => {
 export const logout = () => (dispatch) => {
   dispatch({ type: USER_LOGIN_LOGOUT });
   dispatch({ type: USER_REGISTER_LOGOUT });
+  dispatch({ type: ENTRIES_LIST_RESET });
+  dispatch({ type: EDIT_ENRTY_RESET });
 
   localStorage.removeItem('userInfo');
 };

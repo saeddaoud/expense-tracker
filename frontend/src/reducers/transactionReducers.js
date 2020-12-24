@@ -18,6 +18,8 @@ import {
   EDIT_ENRTY_REQUEST,
   EDIT_ENRTY_SUCCESS,
   EDIT_ENRTY_FAIL,
+  EDIT_ENRTY_RESET,
+  ENTRIES_LIST_RESET,
 } from '../constants.js/transactionConstants';
 
 export const transactionsListReducer = (state = { entries: [] }, action) => {
@@ -29,6 +31,8 @@ export const transactionsListReducer = (state = { entries: [] }, action) => {
       return { ...state, loading: false, success: true, entries: payload };
     case ENTRIES_LIST_FAIL:
       return { ...state, loading: false, error: payload };
+    case ENTRIES_LIST_RESET:
+      return { entries: [] };
     default:
       return state;
   }
@@ -70,9 +74,11 @@ export const transactionEditReducer = (state = {}, action) => {
     case EDIT_ENRTY_REQUEST:
       return { loading: true };
     case EDIT_ENRTY_SUCCESS:
-      return { loading: false, success: true, entry: payload };
+      return { loading: false, success: true };
     case EDIT_ENRTY_FAIL:
       return { loading: false, error: payload };
+    case EDIT_ENRTY_RESET:
+      return {};
     default:
       return state;
   }

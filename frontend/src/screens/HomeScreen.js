@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import './HomeScreen.css';
 
-const HomeScreen = () => {
+const HomeScreen = ({ history }) => {
+  const { userInfo } = useSelector((state) => state.userLogin);
+  useEffect(() => {
+    if (userInfo) history.push('/transactions/me');
+  }, [userInfo, history]);
   return (
     <div className='page page--home'>
       <div className='welcome'>
