@@ -9,6 +9,10 @@ import {
   ENTRIES_LIST_FAIL,
   ENTRIES_LIST_REQUEST,
   ENTRIES_LIST_SUCCESS,
+  FETCH_ENRTY_FAIL,
+  FETCH_ENRTY_REQUEST,
+  FETCH_ENRTY_RESET,
+  FETCH_ENRTY_SUCCESS,
   FETCH_ENTRY,
   FILTER_BY_YEAR,
   SET_YEAR,
@@ -19,8 +23,6 @@ export const listEntries = () => async (dispatch, getState) => {
     dispatch({ type: ENTRIES_LIST_REQUEST });
 
     const token = `Bearer ${getState().userLogin.userInfo.token}`;
-
-    console.log(token);
 
     const config = {
       headers: {
@@ -46,13 +48,10 @@ export const listEntries = () => async (dispatch, getState) => {
 };
 
 export const addEntry = (entry) => async (dispatch, getState) => {
-  console.log('add');
   try {
     dispatch({ type: ADD_ENRTY_REQUEST });
 
     const token = `Bearer ${getState().userLogin.userInfo.token}`;
-
-    console.log(token);
 
     const config = {
       headers: {
@@ -78,9 +77,43 @@ export const addEntry = (entry) => async (dispatch, getState) => {
   }
 };
 
-export const fetchEntry = (entryId) => (dispatch) => {
-  dispatch({ type: FETCH_ENTRY, payload: entryId });
+export const fetchEntry = (entryId) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: FETCH_ENRTY_REQUEST });
+
+    const token = `Bearer ${getState().userLogin.userInfo.token}`;
+
+    const config = {
+      headers: {
+        Authorization: token,
+      },
+    };
+
+    const { data } = await axios.get(`/api/v1/transactions/${entryId}`, config);
+
+    dispatch({
+      type: FETCH_ENRTY_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: FETCH_ENRTY_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
 };
+
+// export const resetFetched = () => (dispatch) => {
+//   console.log('reset');
+//   dispatch({ type: FETCH_ENRTY_RESET });
+// };
+
+// export const fetchEntry = (entryId) => (dispatch) => {
+//   dispatch({ type: FETCH_ENTRY, payload: entryId });
+// };
 export const editEntry = (entry) => (dispatch) => {
   dispatch({ type: EDIT_ENTRY, payload: entry });
 };

@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 import {
   entriesListReducer,
   transactionAddReducer,
+  transactionFetchReducer,
   transactionsListReducer,
 } from './reducers/transactionReducers';
 import { userLoginReducer, userRegisterReducer } from './reducers/userReducers';
@@ -15,6 +16,7 @@ const reducer = combineReducers({
   userRegister: userRegisterReducer,
   entriesList: entriesListReducer,
   transactionAdd: transactionAddReducer,
+  transactionFetch: transactionFetchReducer,
   transactionsList: transactionsListReducer,
 });
 

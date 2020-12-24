@@ -11,6 +11,10 @@ import {
   ENTRIES_LIST_REQUEST,
   ENTRIES_LIST_SUCCESS,
   ENTRIES_LIST_FAIL,
+  FETCH_ENRTY_FAIL,
+  FETCH_ENRTY_SUCCESS,
+  FETCH_ENRTY_REQUEST,
+  FETCH_ENRTY_RESET,
 } from '../constants.js/transactionConstants';
 
 export const transactionsListReducer = (state = { entries: [] }, action) => {
@@ -36,6 +40,22 @@ export const transactionAddReducer = (state = {}, action) => {
       return { loading: false, success: true, entry: payload };
     case ADD_ENRTY_FAIL:
       return { loading: false, error: payload };
+    default:
+      return state;
+  }
+};
+
+export const transactionFetchReducer = (state = { entry: null }, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case FETCH_ENRTY_REQUEST:
+      return { ...state, loading: true };
+    case FETCH_ENRTY_SUCCESS:
+      return { ...state, loading: false, success: true, entry: payload };
+    case FETCH_ENRTY_FAIL:
+      return { ...state, loading: false, error: payload };
+    case FETCH_ENRTY_RESET:
+      return { entry: null };
     default:
       return state;
   }

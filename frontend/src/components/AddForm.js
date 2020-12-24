@@ -2,12 +2,18 @@ import React, { useEffect, useState } from 'react';
 import BackDrop from './BackDrop';
 import './AddForm.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { addEntry, editEntry } from '../actions/transactionActions';
-import { RESET_ENTRY } from '../constants.js/transactionConstants';
+import {
+  addEntry,
+  editEntry,
+  resetFetched,
+} from '../actions/transactionActions';
+// import { RESET_ENTRY } from '../constants.js/transactionConstants';
 import DropDownDate from './DropDownDate';
+import { FETCH_ENRTY_RESET } from '../constants.js/transactionConstants';
 
 const AddForm = ({ setAddClicked }) => {
-  const { entry } = useSelector((state) => state.entriesList);
+  // const { entry } = useSelector((state) => state.entriesList);
+  const { entry } = useSelector((state) => state.transactionFetch);
 
   const [year, setYear] = useState('');
   const [month, setMonth] = useState('');
@@ -26,7 +32,7 @@ const AddForm = ({ setAddClicked }) => {
     if (entry) {
       setTitle(entry.title);
       setAmount(entry.amount);
-      setEntryType(entry.entryType);
+      setEntryType(entry.type);
       setYear(entry.year);
       setMonth(entry.month);
     }
@@ -50,6 +56,17 @@ const AddForm = ({ setAddClicked }) => {
     }
   }, [title, amount, entryType, year, month]);
 
+  const closeClickHandler = () => {
+    console.log('object');
+    setAddClicked(false);
+    dispatch({ type: FETCH_ENRTY_RESET });
+    setTitle('');
+    setAmount('');
+    setEntryType('type');
+    setYear('');
+    setMonth('');
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (
@@ -71,7 +88,8 @@ const AddForm = ({ setAddClicked }) => {
             month,
           })
         );
-        dispatch({ type: RESET_ENTRY });
+        dispatch({ type: FETCH_ENRTY_RESET });
+        // dispatch({ type: RESET_ENTRY });
       } else {
         dispatch(
           addEntry({
@@ -100,7 +118,7 @@ const AddForm = ({ setAddClicked }) => {
     <>
       <BackDrop setAddClicked={setAddClicked} />
       <form className='add-form' onSubmit={handleSubmit}>
-        <div className='close-btn' onClick={() => setAddClicked(false)}>
+        <div className='close-btn' onClick={closeClickHandler}>
           <i className='fas fa-times'></i>
         </div>
         <div className='add-form__control add-form__control-top'>
