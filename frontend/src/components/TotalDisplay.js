@@ -8,7 +8,8 @@ const TotalDisplay = () => {
   const dispatch = useDispatch();
   const [year, setYear] = useState('Year');
   const [month, setMonth] = useState('Month');
-  const { entries, filtered } = useSelector((state) => state.entriesList);
+  const { filtered } = useSelector((state) => state.entriesList);
+  const { entries } = useSelector((state) => state.transactionsList);
 
   useEffect(() => {
     dispatch(filterEntries(year));
@@ -18,9 +19,9 @@ const TotalDisplay = () => {
     filtered.length === 0 && year !== 'Year' && year !== 'all'
       ? []
       : filtered.length === 0 && entries.length > 0
-      ? entries.filter((el) => el.entryType === 'income')
+      ? entries.filter((el) => el.type === 'income')
       : filtered.length > 0
-      ? filtered.filter((el) => el.entryType === 'income')
+      ? filtered.filter((el) => el.type === 'income')
       : [];
   const totalIncome = incomeEntries.reduce(
     (acc, cur) => acc + Number(cur.amount),
@@ -30,9 +31,9 @@ const TotalDisplay = () => {
     filtered.length === 0 && year !== 'Year' && year !== 'all'
       ? []
       : filtered.length === 0 && entries.length > 0
-      ? entries.filter((el) => el.entryType === 'expense')
+      ? entries.filter((el) => el.type === 'expense')
       : filtered.length > 0
-      ? filtered.filter((el) => el.entryType === 'expense')
+      ? filtered.filter((el) => el.type === 'expense')
       : [];
   const totalExpense = expenseEntries.reduce(
     (acc, cur) => acc + Number(cur.amount),

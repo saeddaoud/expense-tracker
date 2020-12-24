@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 import {
   entriesListReducer,
   transactionAddReducer,
+  transactionDeleteReducer,
   transactionFetchReducer,
   transactionsListReducer,
 } from './reducers/transactionReducers';
@@ -17,6 +18,7 @@ const reducer = combineReducers({
   entriesList: entriesListReducer,
   transactionAdd: transactionAddReducer,
   transactionFetch: transactionFetchReducer,
+  transactionDelete: transactionDeleteReducer,
   transactionsList: transactionsListReducer,
 });
 

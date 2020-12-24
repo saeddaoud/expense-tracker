@@ -4,16 +4,16 @@ import {
   ADD_ENRTY_FAIL,
   ADD_ENRTY_REQUEST,
   ADD_ENRTY_SUCCESS,
-  DELETE_ENTRY,
+  DELETE_ENRTY_FAIL,
+  DELETE_ENRTY_REQUEST,
+  DELETE_ENRTY_SUCCESS,
   EDIT_ENTRY,
   ENTRIES_LIST_FAIL,
   ENTRIES_LIST_REQUEST,
   ENTRIES_LIST_SUCCESS,
   FETCH_ENRTY_FAIL,
   FETCH_ENRTY_REQUEST,
-  FETCH_ENRTY_RESET,
   FETCH_ENRTY_SUCCESS,
-  FETCH_ENTRY,
   FILTER_BY_YEAR,
   SET_YEAR,
 } from '../constants.js/transactionConstants';
@@ -106,6 +106,33 @@ export const fetchEntry = (entryId) => async (dispatch, getState) => {
   }
 };
 
+export const deleteEntry = (entryId) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: DELETE_ENRTY_REQUEST });
+
+    const token = `Bearer ${getState().userLogin.userInfo.token}`;
+
+    const config = {
+      headers: {
+        Authorization: token,
+      },
+    };
+
+    await axios.delete(`/api/v1/transactions/${entryId}`, config);
+
+    dispatch({
+      type: DELETE_ENRTY_SUCCESS,
+    });
+  } catch (error) {
+    dispatch({
+      type: DELETE_ENRTY_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
 // export const resetFetched = () => (dispatch) => {
 //   console.log('reset');
 //   dispatch({ type: FETCH_ENRTY_RESET });
@@ -120,6 +147,6 @@ export const editEntry = (entry) => (dispatch) => {
 export const filterEntries = (year) => (dispatch) => {
   dispatch({ type: FILTER_BY_YEAR, payload: year });
 };
-export const deleteEntry = (entryId) => (dispatch) => {
-  dispatch({ type: DELETE_ENTRY, payload: entryId });
-};
+// export const deleteEntry = (entryId) => (dispatch) => {
+//   dispatch({ type: DELETE_ENTRY, payload: entryId });
+// };

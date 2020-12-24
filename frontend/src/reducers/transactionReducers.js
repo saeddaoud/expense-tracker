@@ -1,8 +1,5 @@
 import {
-  DELETE_ENTRY,
   EDIT_ENTRY,
-  FETCH_ENTRY,
-  RESET_ENTRY,
   FILTER_BY_YEAR,
   SET_YEAR,
   ADD_ENRTY_REQUEST,
@@ -15,6 +12,9 @@ import {
   FETCH_ENRTY_SUCCESS,
   FETCH_ENRTY_REQUEST,
   FETCH_ENRTY_RESET,
+  DELETE_ENRTY_REQUEST,
+  DELETE_ENRTY_SUCCESS,
+  DELETE_ENRTY_FAIL,
 } from '../constants.js/transactionConstants';
 
 export const transactionsListReducer = (state = { entries: [] }, action) => {
@@ -61,6 +61,20 @@ export const transactionFetchReducer = (state = { entry: null }, action) => {
   }
 };
 
+export const transactionDeleteReducer = (state = {}, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case DELETE_ENRTY_REQUEST:
+      return { loading: true };
+    case DELETE_ENRTY_SUCCESS:
+      return { loading: false, success: true };
+    case DELETE_ENRTY_FAIL:
+      return { loading: false, error: payload };
+    default:
+      return state;
+  }
+};
+
 export const entriesListReducer = (
   state = { entries: [], entry: null, filtered: [], year: 'Year' },
   action
@@ -69,11 +83,11 @@ export const entriesListReducer = (
   switch (type) {
     // case ADD_ENTRY:
     //   return { ...state, entries: [payload, ...state.entries] };
-    case FETCH_ENTRY:
-      return {
-        ...state,
-        entry: state.entries.find((el) => el.id === payload),
-      };
+    // case FETCH_ENTRY:
+    //   return {
+    //     ...state,
+    //     entry: state.entries.find((el) => el.id === payload),
+    //   };
     case EDIT_ENTRY:
       return {
         ...state,
@@ -81,11 +95,11 @@ export const entriesListReducer = (
           el.id === payload.id ? payload : el
         ),
       };
-    case DELETE_ENTRY:
-      return {
-        ...state,
-        entries: state.entries.filter((el) => el.id !== payload),
-      };
+    // case DELETE_ENTRY:
+    //   return {
+    //     ...state,
+    //     entries: state.entries.filter((el) => el.id !== payload),
+    //   };
     case FILTER_BY_YEAR:
       return {
         ...state,
@@ -97,8 +111,8 @@ export const entriesListReducer = (
         ...state,
         year: payload,
       };
-    case RESET_ENTRY:
-      return { ...state, entry: null, filtered: [] };
+    // case RESET_ENTRY:
+    //   return { ...state, entry: null, filtered: [] };
     default:
       return state;
   }

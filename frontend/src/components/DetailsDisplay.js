@@ -18,10 +18,13 @@ const DetailsDisplay = () => {
   );
   console.log(entries);
   const { success: successAdd } = useSelector((state) => state.transactionAdd);
+  const { success: successDelete } = useSelector(
+    (state) => state.transactionDelete
+  );
 
   useEffect(() => {
     dispatch(listEntries());
-  }, [successAdd]);
+  }, [successAdd, successDelete]);
 
   const incomeEntries =
     filtered.length === 0 && year !== 'Year' && year !== 'all'
