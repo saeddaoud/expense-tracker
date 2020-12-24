@@ -21,10 +21,13 @@ const DetailsDisplay = () => {
   const { success: successDelete } = useSelector(
     (state) => state.transactionDelete
   );
+  const { success: successEdit } = useSelector(
+    (state) => state.transactionEdit
+  );
 
   useEffect(() => {
     dispatch(listEntries());
-  }, [successAdd, successDelete]);
+  }, [successAdd, successDelete, successEdit]);
 
   const incomeEntries =
     filtered.length === 0 && year !== 'Year' && year !== 'all'

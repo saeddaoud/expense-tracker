@@ -80,8 +80,8 @@ const AddForm = ({ setAddClicked }) => {
       if (entry) {
         dispatch(
           editEntry({
-            id: entry.id,
-            entryType,
+            _id: entry._id,
+            type: entryType,
             title,
             amount,
             year,
@@ -113,6 +113,7 @@ const AddForm = ({ setAddClicked }) => {
       if (month === 'Month') setMonthErr('Select Month');
       if (entryType === 'type') setTypeErr('Select Type');
     }
+    setAddClicked(false);
   };
   return (
     <>

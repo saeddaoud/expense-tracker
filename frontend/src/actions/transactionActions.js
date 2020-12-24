@@ -7,6 +7,9 @@ import {
   DELETE_ENRTY_FAIL,
   DELETE_ENRTY_REQUEST,
   DELETE_ENRTY_SUCCESS,
+  EDIT_ENRTY_FAIL,
+  EDIT_ENRTY_REQUEST,
+  EDIT_ENRTY_SUCCESS,
   EDIT_ENTRY,
   ENTRIES_LIST_FAIL,
   ENTRIES_LIST_REQUEST,
@@ -69,6 +72,40 @@ export const addEntry = (entry) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: ADD_ENRTY_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const editEntry = (entry) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: EDIT_ENRTY_REQUEST });
+
+    const token = `Bearer ${getState().userLogin.userInfo.token}`;
+
+    const config = {
+      headers: {
+        'Type-Content': 'application/json',
+        Authorization: token,
+      },
+    };
+
+    const { data } = await axios.put(
+      `/api/v1/transactions/${entry._id}`,
+      entry,
+      config
+    );
+
+    dispatch({
+      type: EDIT_ENRTY_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: EDIT_ENRTY_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
@@ -141,9 +178,9 @@ export const deleteEntry = (entryId) => async (dispatch, getState) => {
 // export const fetchEntry = (entryId) => (dispatch) => {
 //   dispatch({ type: FETCH_ENTRY, payload: entryId });
 // };
-export const editEntry = (entry) => (dispatch) => {
-  dispatch({ type: EDIT_ENTRY, payload: entry });
-};
+// export const editEntry = (entry) => (dispatch) => {
+//   dispatch({ type: EDIT_ENTRY, payload: entry });
+// };
 export const filterEntries = (year) => (dispatch) => {
   dispatch({ type: FILTER_BY_YEAR, payload: year });
 };

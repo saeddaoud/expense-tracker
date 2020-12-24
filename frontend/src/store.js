@@ -5,6 +5,7 @@ import {
   entriesListReducer,
   transactionAddReducer,
   transactionDeleteReducer,
+  transactionEditReducer,
   transactionFetchReducer,
   transactionsListReducer,
 } from './reducers/transactionReducers';
@@ -18,6 +19,7 @@ const reducer = combineReducers({
   entriesList: entriesListReducer,
   transactionAdd: transactionAddReducer,
   transactionFetch: transactionFetchReducer,
+  transactionEdit: transactionEditReducer,
   transactionDelete: transactionDeleteReducer,
   transactionsList: transactionsListReducer,
 });
