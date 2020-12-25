@@ -117,6 +117,7 @@ form {
 }
 
 .wrapper {
+  width: 100%;
   position: relative;
   margin: 0 auto;
   display: flex;
@@ -156,6 +157,7 @@ h1 {
     width: 70%;
     /* margin: 3rem auto; */
     padding: 2rem;
+    min-height: calc(100vh - 100px);
   }
   h1 {
     font-size: 2rem;
@@ -164,12 +166,28 @@ h1 {
     width: 50%;
     font-size: 1.6rem;
   }
+  .form {
+    /* width: 500px; */
+    margin: 0 auto;
+  }
+  .form-control {
+    height: 40px;
+  }
+  .form-control input {
+    /* padding: 2rem; */
+    font-size: 1.7rem;
+  }
+  .btn {
+    padding: 1rem;
+    font-size: 1.5rem;
+  }
 }
 
 /* Large Screens */
 @media (min-width: 900px) {
   .container {
     width: 60%;
+
     /* margin: 3rem auto; */
   }
   h1 {
@@ -177,6 +195,9 @@ h1 {
   }
   select {
     font-size: 1.7rem;
+  }
+  .box {
+    padding: 2rem;
   }
 }
 

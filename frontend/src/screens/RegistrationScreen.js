@@ -40,7 +40,10 @@ const RegistrationScreen = ({ history }) => {
       {loading ? (
         <Spinner />
       ) : (
-        error && <Message variant='danger'>{error}</Message>
+        error &&
+        error
+          .split(',')
+          .map((errMessage) => <Message variant='danger'>{errMessage}</Message>)
       )}
       <div className='page page--register'>
         <form className='form' onSubmit={submitHandler}>

@@ -24,7 +24,7 @@ const NavBar = () => {
       <div className='menu'>
         <ul className='list'>
           <li>
-            <Link to='/'>Home</Link>
+            {!userInfoLogin && !userInforRegister && <Link to='/'>Home</Link>}
           </li>
           <li>
             {userInfoLogin || userInforRegister ? (

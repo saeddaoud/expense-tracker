@@ -26,3 +26,23 @@
   color: #eee;
   font-size: 1.3rem;
 }
+
+@media (min-width: 600px) {
+  .navbar {
+    height: 60px;
+  }
+  .list a {
+    font-size: 2rem;
+  }
+  .logo h1 {
+    font-size: 3rem;
+  }
+}
+
+/* Large Screens */
+@media (min-width: 900px) {
+}
+
+/* Extra Large Screens */
+@media (min-width: 1200px) {
+}

@@ -1,8 +1,25 @@
 .page--login {
   align-self: center;
+  width: 100%;
 }
 
 .page--login p {
   font-size: 1.5rem;
   margin-top: 2rem;
+}
+
+/* Tablet and Laptops */
+@media (min-width: 600px) {
+  .page--login p {
+    font-size: 1.7rem;
+    margin-top: 3rem;
+  }
+}
+
+/* Large Screens */
+@media (min-width: 900px) {
+}
+
+/* Extra Large Screens */
+@media (min-width: 1200px) {
 }
