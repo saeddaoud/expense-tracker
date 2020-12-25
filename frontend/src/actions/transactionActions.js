@@ -10,7 +10,10 @@ import {
   EDIT_ENRTY_FAIL,
   EDIT_ENRTY_REQUEST,
   EDIT_ENRTY_SUCCESS,
-  EDIT_ENTRY,
+  // EDIT_ENTRY,
+  // ENTRIES_FILTERED_LIST_FAIL,
+  // ENTRIES_FILTERED_LIST_REQUEST,
+  // ENTRIES_FILTERED_LIST_SUCCESS,
   ENTRIES_LIST_FAIL,
   ENTRIES_LIST_REQUEST,
   ENTRIES_LIST_SUCCESS,
@@ -21,7 +24,7 @@ import {
   SET_YEAR,
 } from '../constants.js/transactionConstants';
 
-export const listEntries = () => async (dispatch, getState) => {
+export const listEntries = (year = '') => async (dispatch, getState) => {
   try {
     dispatch({ type: ENTRIES_LIST_REQUEST });
 
@@ -33,11 +36,17 @@ export const listEntries = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get('/api/v1/transactions', config);
+    const { data } = await axios.get(
+      `/api/v1/transactions?year=${year}`,
+      config
+    );
 
     dispatch({
       type: ENTRIES_LIST_SUCCESS,
-      payload: data,
+      payload: {
+        entries: data,
+        year: year,
+      },
     });
   } catch (error) {
     dispatch({
@@ -49,6 +58,40 @@ export const listEntries = () => async (dispatch, getState) => {
     });
   }
 };
+
+// export const listFilteredEntries = (year) => async (dispatch, getState) => {
+//   try {
+//     dispatch({ type: ENTRIES_FILTERED_LIST_REQUEST });
+
+//     const token = `Bearer ${getState().userLogin.userInfo.token}`;
+
+//     const config = {
+//       headers: {
+//         Authorization: token,
+//       },
+//     };
+
+//     const { data } = await axios.get(
+//       `/api/v1/transactions?year=${year}`,
+//       config
+//     );
+
+//     console.log(data);
+
+//     dispatch({
+//       type: ENTRIES_FILTERED_LIST_SUCCESS,
+//       payload: data,
+//     });
+//   } catch (error) {
+//     dispatch({
+//       type: ENTRIES_FILTERED_LIST_FAIL,
+//       payload:
+//         error.response && error.response.data.message
+//           ? error.response.data.message
+//           : error.message,
+//     });
+//   }
+// };
 
 export const addEntry = (entry) => async (dispatch, getState) => {
   try {
@@ -181,9 +224,9 @@ export const deleteEntry = (entryId) => async (dispatch, getState) => {
 // export const editEntry = (entry) => (dispatch) => {
 //   dispatch({ type: EDIT_ENTRY, payload: entry });
 // };
-export const filterEntries = (year) => (dispatch) => {
-  dispatch({ type: FILTER_BY_YEAR, payload: year });
-};
+// export const filterEntries = (year) => (dispatch) => {
+//   dispatch({ type: FILTER_BY_YEAR, payload: year });
+// };
 // export const deleteEntry = (entryId) => (dispatch) => {
 //   dispatch({ type: DELETE_ENTRY, payload: entryId });
 // };

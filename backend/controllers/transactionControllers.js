@@ -9,6 +9,16 @@ export const getTransactions = async (req, res, next) => {
     .exec((err, transactions) => {
       if (err) {
         next(err);
+      }
+      if (
+        req.query.year &&
+        req.query.year !== 'Year' &&
+        req.query.year !== 'all'
+      ) {
+        const filteredTransactions = transactions.filter(
+          (transaction) => transaction.year === req.query.year
+        );
+        return res.json(filteredTransactions);
       } else {
         res.json(transactions);
       }

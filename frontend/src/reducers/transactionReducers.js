@@ -20,23 +20,52 @@ import {
   EDIT_ENRTY_FAIL,
   EDIT_ENRTY_RESET,
   ENTRIES_LIST_RESET,
+  ENTRIES_FILTERED_LIST_RESET,
+  ENTRIES_FILTERED_LIST_FAIL,
+  ENTRIES_FILTERED_LIST_SUCCESS,
+  ENTRIES_FILTERED_LIST_REQUEST,
 } from '../constants.js/transactionConstants';
 
-export const transactionsListReducer = (state = { entries: [] }, action) => {
+export const transactionsListReducer = (
+  state = { entries: [], year: 'Year' },
+  action
+) => {
   const { type, payload } = action;
   switch (type) {
     case ENTRIES_LIST_REQUEST:
       return { ...state, loading: true };
     case ENTRIES_LIST_SUCCESS:
-      return { ...state, loading: false, success: true, entries: payload };
+      return {
+        ...state,
+        loading: false,
+        success: true,
+        entries: payload.entries,
+        year: payload.year,
+      };
     case ENTRIES_LIST_FAIL:
       return { ...state, loading: false, error: payload };
     case ENTRIES_LIST_RESET:
-      return { entries: [] };
+      return { entries: [], year: 'Year' };
     default:
       return state;
   }
 };
+
+// export const transactionsFilteredListReducer = (state = {}, action) => {
+//   const { type, payload } = action;
+//   switch (type) {
+//     case ENTRIES_FILTERED_LIST_REQUEST:
+//       return { loading: true };
+//     case ENTRIES_FILTERED_LIST_SUCCESS:
+//       return { loading: false, success: true, filtered: payload };
+//     case ENTRIES_FILTERED_LIST_FAIL:
+//       return { loading: false, error: payload };
+//     case ENTRIES_FILTERED_LIST_RESET:
+//       return {};
+//     default:
+//       return state;
+//   }
+// };
 
 export const transactionAddReducer = (state = {}, action) => {
   const { type, payload } = action;

@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterEntries } from '../actions/transactionActions';
+import {
+  filterEntries,
+  listEntries,
+  listFilteredEntries,
+} from '../actions/transactionActions';
 import DropDownDate from './DropDownDate';
 import './TotalDisplay.css';
 
@@ -8,33 +12,33 @@ const TotalDisplay = () => {
   const dispatch = useDispatch();
   const [year, setYear] = useState('Year');
   const [month, setMonth] = useState('Month');
-  const { filtered } = useSelector((state) => state.entriesList);
+  // const { filtered } = useSelector((state) => state.transactionsFilteredList);
   const { entries } = useSelector((state) => state.transactionsList);
 
   useEffect(() => {
-    dispatch(filterEntries(year));
-  }, [year, entries]);
+    dispatch(listEntries(year));
+  }, [year]);
 
-  const incomeEntries =
-    filtered.length === 0 && year !== 'Year' && year !== 'all'
-      ? []
-      : filtered.length === 0 && entries.length > 0
-      ? entries.filter((el) => el.type === 'income')
-      : filtered.length > 0
-      ? filtered.filter((el) => el.type === 'income')
-      : [];
+  const incomeEntries = entries.filter((el) => el.type === 'income');
+  // filtered.length === 0 //&& year !== 'Year' && year !== 'all'
+  //   ? []
+  //   : filtered.length === 0 && entries.length > 0
+  //   ? entries.filter((el) => el.type === 'income')
+  //   : filtered.length > 0
+  //   ? filtered.filter((el) => el.type === 'income')
+  //   : [];
   const totalIncome = incomeEntries.reduce(
     (acc, cur) => acc + Number(cur.amount),
     0
   );
-  const expenseEntries =
-    filtered.length === 0 && year !== 'Year' && year !== 'all'
-      ? []
-      : filtered.length === 0 && entries.length > 0
-      ? entries.filter((el) => el.type === 'expense')
-      : filtered.length > 0
-      ? filtered.filter((el) => el.type === 'expense')
-      : [];
+  const expenseEntries = entries.filter((el) => el.type === 'expense');
+  // filtered.length === 0 //&& year !== 'Year' && year !== 'all'
+  //   ? []
+  //   : filtered.length === 0 && entries.length > 0
+  //   ? entries.filter((el) => el.type === 'expense')
+  //   : filtered.length > 0
+  //   ? filtered.filter((el) => el.type === 'expense')
+  //   : [];
   const totalExpense = expenseEntries.reduce(
     (acc, cur) => acc + Number(cur.amount),
     0

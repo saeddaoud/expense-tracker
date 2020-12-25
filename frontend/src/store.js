@@ -7,6 +7,7 @@ import {
   transactionDeleteReducer,
   transactionEditReducer,
   transactionFetchReducer,
+  transactionsFilteredListReducer,
   transactionsListReducer,
 } from './reducers/transactionReducers';
 import { userLoginReducer, userRegisterReducer } from './reducers/userReducers';
@@ -22,6 +23,7 @@ const reducer = combineReducers({
   transactionEdit: transactionEditReducer,
   transactionDelete: transactionDeleteReducer,
   transactionsList: transactionsListReducer,
+  // transactionsFilteredList: transactionsFilteredListReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

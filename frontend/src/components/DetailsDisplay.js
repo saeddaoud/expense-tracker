@@ -12,11 +12,14 @@ const DetailsDisplay = () => {
   const dispatch = useDispatch();
   const [actionBtnClicked, setActionsBtnClicked] = useState(false);
   const [itemId, setItemId] = useState('');
-  const { filtered, year } = useSelector((state) => state.entriesList);
-  const { entries, error, loading } = useSelector(
+  // const { filtered, year } = useSelector((state) => state.entriesList);
+  // const { filtered, sucess: sucessFiltered } = useSelector(
+  //   (state) => state.transactionsFilteredList
+  // );
+  const { entries, error, loading, year } = useSelector(
     (state) => state.transactionsList
   );
-  console.log(entries);
+  console.log(year);
   const { success: successAdd } = useSelector((state) => state.transactionAdd);
   const { success: successDelete } = useSelector(
     (state) => state.transactionDelete
@@ -26,26 +29,28 @@ const DetailsDisplay = () => {
   );
 
   useEffect(() => {
-    dispatch(listEntries());
+    dispatch(listEntries(year));
   }, [successAdd, successDelete, successEdit]);
 
-  const incomeEntries =
-    filtered.length === 0 && year !== 'Year' && year !== 'all'
-      ? []
-      : filtered.length === 0 && entries.length > 0
-      ? entries.filter((el) => el.type === 'income')
-      : filtered.length > 0
-      ? filtered.filter((el) => el.type === 'income')
-      : [];
-  console.log(incomeEntries);
-  const expenseEntries =
-    filtered.length === 0 && year !== 'Year' && year !== 'all'
-      ? []
-      : filtered.length === 0 && entries.length > 0
-      ? entries.filter((el) => el.type === 'expense')
-      : filtered.length > 0
-      ? filtered.filter((el) => el.type === 'expense')
-      : [];
+  const incomeEntries = entries.filter((el) => el.type === 'income');
+  const expenseEntries = entries.filter((el) => el.type === 'expense');
+  // const incomeEntries =
+  //   filtered.length === 0 //&& year !== 'Year' && year !== 'all'
+  //     ? []
+  //     : filtered.length === 0 && entries.length > 0
+  //     ? entries.filter((el) => el.type === 'income')
+  //     : filtered.length > 0
+  //     ? filtered.filter((el) => el.type === 'income')
+  //     : [];
+  // console.log(incomeEntries);
+  // const expenseEntries =
+  //   filtered.length === 0 //&& year !== 'Year' && year !== 'all'
+  //     ? []
+  //     : filtered.length === 0 && entries.length > 0
+  //     ? entries.filter((el) => el.type === 'expense')
+  //     : filtered.length > 0
+  //     ? filtered.filter((el) => el.type === 'expense')
+  //     : [];
   // This function group entries by year and month with each year, but it's difficult to understand
   // ********************************************************
   //   const mapObject = (fn) => (obj) =>
