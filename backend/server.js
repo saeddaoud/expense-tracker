@@ -19,6 +19,10 @@ app.use(express.json());
 // Connect to DB
 connectDB();
 
+// Mount routes
+app.use('/api/v1/transactions', transactionRoutes);
+app.use('/api/v1/users', userRoutes);
+
 // Read static file for deployment
 const __dirname = path.resolve();
 if (process.env.NODE_ENV === 'production') {
@@ -27,10 +31,6 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.join(__dirname, 'frontend', 'build', 'index.html'));
   });
 }
-
-// Mount routes
-app.use('/api/v1/transactions', transactionRoutes);
-app.use('/api/v1/users', userRoutes);
 
 // Error middleware
 app.use(notFound);
