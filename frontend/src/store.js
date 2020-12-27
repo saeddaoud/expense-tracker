@@ -7,7 +7,6 @@ import {
   transactionDeleteReducer,
   transactionEditReducer,
   transactionFetchReducer,
-  transactionsFilteredListReducer,
   transactionsListReducer,
 } from './reducers/transactionReducers';
 import { userLoginReducer, userRegisterReducer } from './reducers/userReducers';

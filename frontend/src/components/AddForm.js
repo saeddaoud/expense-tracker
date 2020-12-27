@@ -2,11 +2,7 @@ import React, { useEffect, useState } from 'react';
 import BackDrop from './BackDrop';
 import './AddForm.css';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  addEntry,
-  editEntry,
-  resetFetched,
-} from '../actions/transactionActions';
+import { addEntry, editEntry } from '../actions/transactionActions';
 // import { RESET_ENTRY } from '../constants.js/transactionConstants';
 import DropDownDate from './DropDownDate';
 import { FETCH_ENRTY_RESET } from '../constants.js/transactionConstants';
@@ -54,7 +50,18 @@ const AddForm = ({ setAddClicked }) => {
     if (typeErr !== '') {
       if (entryType !== 'type') setTypeErr('');
     }
-  }, [title, amount, entryType, year, month]);
+  }, [
+    title,
+    amount,
+    entryType,
+    year,
+    month,
+    amountErr,
+    titleErr,
+    typeErr,
+    monthErr,
+    yearErr,
+  ]);
 
   const closeClickHandler = () => {
     console.log('object');
@@ -89,7 +96,6 @@ const AddForm = ({ setAddClicked }) => {
           })
         );
         dispatch({ type: FETCH_ENRTY_RESET });
-        // dispatch({ type: RESET_ENTRY });
       } else {
         dispatch(
           addEntry({
@@ -101,6 +107,7 @@ const AddForm = ({ setAddClicked }) => {
           })
         );
       }
+      setAddClicked(false);
       setTitle('');
       setAmount('');
       // setEntry('income');
@@ -113,7 +120,6 @@ const AddForm = ({ setAddClicked }) => {
       if (month === 'Month') setMonthErr('Select Month');
       if (entryType === 'type') setTypeErr('Select Type');
     }
-    setAddClicked(false);
   };
   return (
     <>

@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  filterEntries,
-  listEntries,
-  listFilteredEntries,
-} from '../actions/transactionActions';
+import { listEntries } from '../actions/transactionActions';
 import DropDownDate from './DropDownDate';
 import './TotalDisplay.css';
 
@@ -17,7 +13,7 @@ const TotalDisplay = () => {
 
   useEffect(() => {
     dispatch(listEntries(year));
-  }, [year]);
+  }, [year, dispatch]);
 
   const incomeEntries = entries.filter((el) => el.type === 'income');
   // filtered.length === 0 //&& year !== 'Year' && year !== 'all'

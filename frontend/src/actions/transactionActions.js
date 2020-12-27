@@ -10,18 +10,12 @@ import {
   EDIT_ENRTY_FAIL,
   EDIT_ENRTY_REQUEST,
   EDIT_ENRTY_SUCCESS,
-  // EDIT_ENTRY,
-  // ENTRIES_FILTERED_LIST_FAIL,
-  // ENTRIES_FILTERED_LIST_REQUEST,
-  // ENTRIES_FILTERED_LIST_SUCCESS,
   ENTRIES_LIST_FAIL,
   ENTRIES_LIST_REQUEST,
   ENTRIES_LIST_SUCCESS,
   FETCH_ENRTY_FAIL,
   FETCH_ENRTY_REQUEST,
   FETCH_ENRTY_SUCCESS,
-  FILTER_BY_YEAR,
-  SET_YEAR,
 } from '../constants.js/transactionConstants';
 
 export const listEntries = (year = '') => async (dispatch, getState) => {

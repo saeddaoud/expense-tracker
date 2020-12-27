@@ -20,10 +20,6 @@ import {
   EDIT_ENRTY_FAIL,
   EDIT_ENRTY_RESET,
   ENTRIES_LIST_RESET,
-  ENTRIES_FILTERED_LIST_RESET,
-  ENTRIES_FILTERED_LIST_FAIL,
-  ENTRIES_FILTERED_LIST_SUCCESS,
-  ENTRIES_FILTERED_LIST_REQUEST,
 } from '../constants.js/transactionConstants';
 
 export const transactionsListReducer = (

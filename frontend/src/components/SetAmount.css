@@ -1,6 +1,6 @@
 .set-amount .add-amount {
   position: absolute;
-  top: 5px;
+  top: 17px;
   right: 10px;
   /* transform: translateX(-50%); */
   background-color: transparent;
@@ -26,8 +26,8 @@
 /* Tablet and Laptops */
 @media (min-width: 600px) {
   .set-amount .add-amount {
-    top: 20px;
-    right: -40px;
+    top: 17px;
+    right: 20px;
   }
   .set-amount .add-amount i {
     font-size: 3.3rem;
@@ -37,8 +37,8 @@
 /* Large Screens */
 @media (min-width: 900px) {
   .set-amount .add-amount {
-    top: 25px;
-    right: -40px;
+    top: 20px;
+    right: 20px;
   }
   .set-amount .add-amount i {
     font-size: 3.5rem;
@@ -48,8 +48,8 @@
 /* Extra Large Screens */
 @media (min-width: 1200px) {
   .set-amount .add-amount {
-    top: 30px;
-    right: -40px;
+    top: 25px;
+    right: 25px;
   }
   .set-amount .add-amount i {
     font-size: 4rem;

@@ -17,6 +17,16 @@ const TransactionsScreen = ({ history }) => {
   }, [userInfoLogin, userInfoRegister, history]);
   return (
     <div className='page page--transactions'>
+      <div className='hello'>
+        <h1>
+          Hello,{' '}
+          <span>
+            {userInfoRegister
+              ? userInfoRegister.name.split(' ')[0]
+              : userInfoLogin.name.split(' ')[0]}
+          </span>
+        </h1>
+      </div>
       <TotalDisplay />
       <SetAmount />
       <DetailsDisplay />

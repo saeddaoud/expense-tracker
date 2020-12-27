@@ -19,7 +19,6 @@ const DetailsDisplay = () => {
   const { entries, error, loading, year } = useSelector(
     (state) => state.transactionsList
   );
-  console.log(year);
   const { success: successAdd } = useSelector((state) => state.transactionAdd);
   const { success: successDelete } = useSelector(
     (state) => state.transactionDelete
@@ -30,7 +29,7 @@ const DetailsDisplay = () => {
 
   useEffect(() => {
     dispatch(listEntries(year));
-  }, [successAdd, successDelete, successEdit]);
+  }, [successAdd, successDelete, successEdit, dispatch, year]);
 
   const incomeEntries = entries.filter((el) => el.type === 'income');
   const expenseEntries = entries.filter((el) => el.type === 'expense');

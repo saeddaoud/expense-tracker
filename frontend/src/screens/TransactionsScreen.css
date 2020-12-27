@@ -1,3 +1,16 @@
 .page--transactions {
+  width: 100%;
   align-self: flex-start;
+}
+
+.hello {
+  width: 100%;
+  text-align: left;
+  padding-left: 1rem;
+}
+
+@media (min-width: 600px) {
+  .hello {
+    padding-left: 0;
+  }
 }

@@ -1,5 +1,21 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import './DropDownDate.css';
+
+const months = [
+  'Month',
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
 
 const DropDownDate = ({
   setYear,
@@ -11,34 +27,21 @@ const DropDownDate = ({
   flexDirection = 'row',
   filter = false,
 }) => {
-  const months = [
-    'Month',
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
-
   const currentYear = new Date().getFullYear();
-  const years = [];
-  years.push('Year');
-  if (filter) years.push('all');
-  for (let i = 0; i <= 5; i++) {
-    years.push(currentYear - i);
-  }
+  const years = useMemo(() => {
+    const yearsTemp = [];
+    yearsTemp.push('Year');
+    if (filter) yearsTemp.push('all');
+    for (let i = 0; i <= 5; i++) {
+      yearsTemp.push(currentYear - i);
+    }
+    return yearsTemp;
+  }, [filter, currentYear]);
 
   useEffect(() => {
     setMonth(months[0]);
     setYear(years[0]);
-  }, []);
+  }, [years, setYear, setMonth]);
 
   return (
     <div
