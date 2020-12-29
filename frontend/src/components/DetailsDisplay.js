@@ -31,8 +31,8 @@ const DetailsDisplay = () => {
     dispatch(listEntries(year));
   }, [successAdd, successDelete, successEdit, dispatch, year]);
 
-  const incomeEntries = entries.filter((el) => el.type === 'income');
-  const expenseEntries = entries.filter((el) => el.type === 'expense');
+  // const incomeEntries = entries.filter((el) => el.type === 'income');
+  // const expenseEntries = entries.filter((el) => el.type === 'expense');
   // const incomeEntries =
   //   filtered.length === 0 //&& year !== 'Year' && year !== 'all'
   //     ? []
@@ -65,7 +65,7 @@ const DetailsDisplay = () => {
   //   mapObject (group ('month')) (group ('year') (input))
   // *******************************************************************
 
-  const incomeEntriesByYearMonth = incomeEntries.reduce((accumulator, item) => {
+  const entriesByYearMonth = entries.reduce((accumulator, item) => {
     accumulator[item.year] = accumulator[item.year] || {};
     accumulator[item.year][item.month] =
       accumulator[item.year][item.month] || [];
@@ -73,29 +73,29 @@ const DetailsDisplay = () => {
     return accumulator;
   }, {});
 
-  const incomeEntriesByYearMonthArr = Object.entries(
-    incomeEntriesByYearMonth
-  ).sort((a, b) => b[0] - a[0]);
+  const entriesByYearMonthArr = Object.entries(entriesByYearMonth).sort(
+    (a, b) => b[0] - a[0]
+  );
 
   // console.log(
   //   Object.fromEntries(
   //     Object.entries(incomeEntriesByYearMonth).sort( )
   //   ).reduce((o, [k, v]) => ((o[k] = v), o), {})
   // );
-  const expenseEntriesByYearMonth = expenseEntries.reduce(
-    (accumulator, item) => {
-      accumulator[item.year] = accumulator[item.year] || {};
-      accumulator[item.year][item.month] =
-        accumulator[item.year][item.month] || [];
-      accumulator[item.year][item.month].push(item);
-      return accumulator;
-    },
-    {}
-  );
+  // const expenseEntriesByYearMonth = expenseEntries.reduce(
+  //   (accumulator, item) => {
+  //     accumulator[item.year] = accumulator[item.year] || {};
+  //     accumulator[item.year][item.month] =
+  //       accumulator[item.year][item.month] || [];
+  //     accumulator[item.year][item.month].push(item);
+  //     return accumulator;
+  //   },
+  //   {}
+  // );
 
-  const expenseEntriesByYearMonthArr = Object.entries(
-    expenseEntriesByYearMonth
-  ).sort((a, b) => b[0] - a[0]);
+  // const expenseEntriesByYearMonthArr = Object.entries(
+  //   expenseEntriesByYearMonth
+  // ).sort((a, b) => b[0] - a[0]);
 
   return (
     <>
@@ -106,19 +106,19 @@ const DetailsDisplay = () => {
       )}
       <div className='details-display'>
         <DetailsDisplayItem
-          entries={incomeEntriesByYearMonthArr}
+          entries={entriesByYearMonthArr}
           actionBtnClicked={actionBtnClicked}
           setActionsBtnClicked={setActionsBtnClicked}
           itemId={itemId}
           setItemId={setItemId}
         />
-        <DetailsDisplayItem
+        {/* <DetailsDisplayItem
           entries={expenseEntriesByYearMonthArr}
           actionBtnClicked={actionBtnClicked}
           setActionsBtnClicked={setActionsBtnClicked}
           itemId={itemId}
           setItemId={setItemId}
-        />
+        /> */}
       </div>
     </>
   );
