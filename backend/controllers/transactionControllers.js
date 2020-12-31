@@ -14,20 +14,25 @@ export const getTransactions = async (req, res, next) => {
   if (year && !month) {
     // If only year is provided, return all queries from the start of that year until the end of it
     startDate = new Date(year, 0, 1);
-    endDate = new Date(year, 12, 0);
+    endDate = new Date(Number(year) + 1, 0, 1);
   } else if (year && month) {
     // If month and year are provided, return all documents from the start and the end of that month
     startDate = new Date(year, month, 1);
-    endDate = new Date(year, month + 1, 0);
+    endDate =
+      month == 11
+        ? new Date(Number(year) + 1, 0, 1)
+        : new Date(year, Number(month) + 1, 1);
   } else {
     // If no month and year is provided, return the documnets created in the current month (The default)
     const todayDate = new Date();
     const currentMonth = todayDate.getMonth();
     const currentYear = todayDate.getFullYear();
     startDate = new Date(currentYear, currentMonth, 1);
-    endDate = new Date(currentYear, currentMonth + 1, 0);
+    endDate = new Date(currentYear, Number(currentMonth) + 1, 1);
   }
-
+  console.log(startDate.toLocaleString(), endDate.toLocaleString());
+  // ex: if query include year=2020, then return all documents created between Jan 1st, 2020 12:00 am (inclusive) and Jan 1st, 2020 12:00 am (exclusive)
+  // if ex: if query include year=2020 and month=11 (for Dec.), then return all documents created between Dec 1st, 2020 12:00 am (inclusive) and Jan 1st, 2021 12:00 am (exclusive)
   await Transaction.find({
     $and: [
       { user: req.user._id },
