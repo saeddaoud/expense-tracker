@@ -1,24 +1,43 @@
+import { toDate } from 'date-fns';
 import Transaction from '../models/transactionModel.js';
 
 //@desc         Get all transactions
 //@route        GET /api/v1/transactions
 //@access       Private
 export const getTransactions = async (req, res, next) => {
-  await Transaction.find({ user: req.user._id })
+  let startDate, endDate;
+  // Check if the user provides a query with the month and/or year
+  let { year, month } = req.query; //month is expected to be between 0 and 11
+  // year = Number(year);
+  // month = Number(month);
+
+  if (year && !month) {
+    // If only year is provided, return all queries from the start of that year until the end of it
+    startDate = new Date(year, 0, 1);
+    endDate = new Date(year, 12, 0);
+  } else if (year && month) {
+    // If month and year are provided, return all documents from the start and the end of that month
+    startDate = new Date(year, month, 1);
+    endDate = new Date(year, month + 1, 0);
+  } else {
+    // If no month and year is provided, return the documnets created in the current month (The default)
+    const todayDate = new Date();
+    const currentMonth = todayDate.getMonth();
+    const currentYear = todayDate.getFullYear();
+    startDate = new Date(currentYear, currentMonth, 1);
+    endDate = new Date(currentYear, currentMonth + 1, 0);
+  }
+
+  await Transaction.find({
+    $and: [
+      { user: req.user._id },
+      { createdAt: { $gte: startDate, $lt: endDate } },
+    ],
+  })
     .populate('user', 'name')
     .exec((err, transactions) => {
       if (err) {
         next(err);
-      }
-      if (
-        req.query.year &&
-        req.query.year !== 'Year' &&
-        req.query.year !== 'all'
-      ) {
-        const filteredTransactions = transactions.filter(
-          (transaction) => transaction.year === req.query.year
-        );
-        return res.json(filteredTransactions);
       } else {
         res.json(transactions);
       }
