@@ -1,12 +1,19 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { listEntries } from '../actions/transactionActions';
 import DetailsDisplay from '../components/DetailsDisplay';
+import DropDownDate from '../components/DropDownDate';
 import SetAmount from '../components/SetAmount';
 import TotalDisplay from '../components/TotalDisplay';
 
 import './TransactionsScreen.css';
 
 const TransactionsScreen = ({ history }) => {
+  const dispatch = useDispatch();
+
+  const [year, setYear] = useState('Year');
+  const [month, setMonth] = useState('Month');
+
   const { userInfo: userInfoLogin } = useSelector((state) => state.userLogin);
   const { userInfo: userInfoRegister } = useSelector(
     (state) => state.userRegister
@@ -14,7 +21,10 @@ const TransactionsScreen = ({ history }) => {
 
   useEffect(() => {
     if (!userInfoLogin && !userInfoRegister) history.push('/login');
-  }, [userInfoLogin, userInfoRegister, history]);
+    dispatch(
+      listEntries(year !== 'Year' ? year : '', month !== 'Month' ? month : '')
+    );
+  }, [userInfoLogin, userInfoRegister, history, year, month]);
   return (
     <div className='page page--transactions'>
       <div className='hello'>
@@ -29,6 +39,14 @@ const TransactionsScreen = ({ history }) => {
       </div>
       <TotalDisplay />
       <SetAmount />
+      <DropDownDate
+        year={year}
+        month={month}
+        setYear={setYear}
+        setMonth={setMonth}
+        // flexDirection='column'
+        filter={true}
+      />
       <DetailsDisplay />
     </div>
   );

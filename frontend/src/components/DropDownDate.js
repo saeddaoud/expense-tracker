@@ -31,7 +31,7 @@ const DropDownDate = ({
   const years = useMemo(() => {
     const yearsTemp = [];
     yearsTemp.push('Year');
-    if (filter) yearsTemp.push('all');
+    // if (filter) yearsTemp.push('all');
     for (let i = 0; i <= 5; i++) {
       yearsTemp.push(currentYear - i);
     }
@@ -70,28 +70,28 @@ const DropDownDate = ({
         </select>
         {yearErr && <div className='error'>{yearErr}</div>}{' '}
       </div>
-      {!filter && (
-        <div className='months'>
-          <select
-            name='month'
-            value={month}
-            onChange={(e) => {
-              setMonth(e.target.value);
-            }}
-          >
-            {months.map((monthEl) => (
-              <option
-                value={monthEl}
-                key={`month${monthEl}`}
-                disabled={monthEl === 'Month'}
-              >
-                {monthEl}
-              </option>
-            ))}
-          </select>
-          {monthErr && <div className='error'>{monthErr}</div>}{' '}
-        </div>
-      )}
+
+      <div className='months'>
+        <select
+          name='month'
+          value={month}
+          onChange={(e) => {
+            setMonth(e.target.value);
+          }}
+          className={filter ? 'filter' : ''}
+        >
+          {months.map((monthEl) => (
+            <option
+              value={monthEl}
+              key={`month${monthEl}`}
+              disabled={monthEl === 'Month'}
+            >
+              {monthEl}
+            </option>
+          ))}
+        </select>
+        {monthErr && <div className='error'>{monthErr}</div>}{' '}
+      </div>
     </div>
   );
 };

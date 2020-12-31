@@ -18,8 +18,12 @@ import {
   FETCH_ENRTY_SUCCESS,
 } from '../constants.js/transactionConstants';
 
-export const listEntries = (year = '') => async (dispatch, getState) => {
+export const listEntries = (year = '', month = '') => async (
+  dispatch,
+  getState
+) => {
   try {
+    console.log(year, month);
     dispatch({ type: ENTRIES_LIST_REQUEST });
 
     const token = `Bearer ${getState().userLogin.userInfo.token}`;
@@ -29,19 +33,49 @@ export const listEntries = (year = '') => async (dispatch, getState) => {
         Authorization: token,
       },
     };
+    if (year && !month) {
+      const { data } = await axios.get(
+        `/api/v1/transactions?year=${year}`,
+        config
+      );
 
-    const { data } = await axios.get(
-      `/api/v1/transactions?year=${year}`,
-      config
-    );
+      console.log(1, data);
 
-    dispatch({
-      type: ENTRIES_LIST_SUCCESS,
-      payload: {
-        entries: data,
-        year: year,
-      },
-    });
+      dispatch({
+        type: ENTRIES_LIST_SUCCESS,
+        payload: {
+          entries: data,
+          year: year,
+        },
+      });
+    } else if (year && month) {
+      const { data } = await axios.get(
+        `/api/v1/transactions?year=${year}&month=${month}`,
+        config
+      );
+
+      console.log(2, data);
+
+      dispatch({
+        type: ENTRIES_LIST_SUCCESS,
+        payload: {
+          entries: data,
+          year: year,
+        },
+      });
+    } else {
+      const { data } = await axios.get(`/api/v1/transactions`, config);
+
+      dispatch({
+        type: ENTRIES_LIST_SUCCESS,
+        payload: {
+          entries: data,
+          year: year,
+        },
+      });
+
+      console.log(3, data);
+    }
   } catch (error) {
     dispatch({
       type: ENTRIES_LIST_FAIL,

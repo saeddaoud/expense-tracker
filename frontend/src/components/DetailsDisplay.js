@@ -27,9 +27,11 @@ const DetailsDisplay = () => {
     (state) => state.transactionEdit
   );
 
+  console.log('entries', entries);
+
   useEffect(() => {
-    dispatch(listEntries(year));
-  }, [successAdd, successDelete, successEdit, dispatch, year]);
+    dispatch(listEntries());
+  }, [successAdd, successDelete, successEdit, dispatch]);
 
   // const incomeEntries = entries.filter((el) => el.type === 'income');
   // const expenseEntries = entries.filter((el) => el.type === 'expense');
@@ -65,17 +67,17 @@ const DetailsDisplay = () => {
   //   mapObject (group ('month')) (group ('year') (input))
   // *******************************************************************
 
-  const entriesByYearMonth = entries.reduce((accumulator, item) => {
-    accumulator[item.year] = accumulator[item.year] || {};
-    accumulator[item.year][item.month] =
-      accumulator[item.year][item.month] || [];
-    accumulator[item.year][item.month].push(item);
-    return accumulator;
-  }, {});
+  // const entriesByYearMonth = entries.reduce((accumulator, item) => {
+  //   accumulator[item.year] = accumulator[item.year] || {};
+  //   accumulator[item.year][item.month] =
+  //     accumulator[item.year][item.month] || [];
+  //   accumulator[item.year][item.month].push(item);
+  //   return accumulator;
+  // }, {});
 
-  const entriesByYearMonthArr = Object.entries(entriesByYearMonth).sort(
-    (a, b) => b[0] - a[0]
-  );
+  // const entriesByYearMonthArr = Object.entries(entriesByYearMonth).sort(
+  //   (a, b) => b[0] - a[0]
+  // );
 
   // console.log(
   //   Object.fromEntries(
@@ -106,7 +108,8 @@ const DetailsDisplay = () => {
       )}
       <div className='details-display'>
         <DetailsDisplayItem
-          entries={entriesByYearMonthArr}
+          // entries={entriesByYearMonthArr}
+          entries={entries}
           actionBtnClicked={actionBtnClicked}
           setActionsBtnClicked={setActionsBtnClicked}
           itemId={itemId}

@@ -20,14 +20,14 @@ const transactionSchema = new Schema(
       type: String,
       required: ['true', 'Please select transaction type'],
     },
-    year: {
-      type: String,
-      require: true,
-    },
-    month: {
-      type: String,
-      require: true,
-    },
+    // year: {
+    //   type: String,
+    //   require: true,
+    // },
+    // month: {
+    //   type: String,
+    //   require: true,
+    // },
   },
   {
     timestamps: true,

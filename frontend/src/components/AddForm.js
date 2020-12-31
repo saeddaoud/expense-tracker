@@ -145,7 +145,7 @@ const AddForm = ({ setAddClicked }) => {
             {typeErr && <div className='error'>{typeErr}</div>}
           </div>
 
-          <DropDownDate
+          {/* <DropDownDate
             year={year}
             month={month}
             setYear={setYear}
@@ -154,7 +154,7 @@ const AddForm = ({ setAddClicked }) => {
             setMonthErr={setMonthErr}
             yearErr={yearErr}
             monthErr={monthErr}
-          />
+          /> */}
         </div>
         <div className='add-form__control'>
           {/* <label htmlFor='title'>Title</label> */}
