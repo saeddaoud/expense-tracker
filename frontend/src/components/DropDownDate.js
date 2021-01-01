@@ -36,7 +36,7 @@ const DropDownDate = ({
       yearsTemp.push(currentYear - i);
     }
     return yearsTemp;
-  }, [filter, currentYear]);
+  }, [currentYear]);
 
   useEffect(() => {
     setMonth(months[0]);

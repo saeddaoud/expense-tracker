@@ -11,8 +11,12 @@ import './TransactionsScreen.css';
 const TransactionsScreen = ({ history }) => {
   const dispatch = useDispatch();
 
-  const [year, setYear] = useState('Year');
-  const [month, setMonth] = useState('Month');
+  const { year: yearList, month: monthList } = useSelector(
+    (state) => state.transactionsList
+  );
+
+  const [year, setYear] = useState(yearList);
+  const [month, setMonth] = useState(monthList);
 
   const { userInfo: userInfoLogin } = useSelector((state) => state.userLogin);
   const { userInfo: userInfoRegister } = useSelector(
@@ -24,7 +28,7 @@ const TransactionsScreen = ({ history }) => {
     dispatch(
       listEntries(year !== 'Year' ? year : '', month !== 'Month' ? month : '')
     );
-  }, [userInfoLogin, userInfoRegister, history, year, month]);
+  }, [userInfoLogin, userInfoRegister, history, year, month, dispatch]);
   return (
     <div className='page page--transactions'>
       <div className='hello'>

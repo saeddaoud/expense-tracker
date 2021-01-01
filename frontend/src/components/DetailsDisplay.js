@@ -7,6 +7,7 @@ import Message from '../components/Message';
 
 import './DetailsDisplay.css';
 import { listEntries } from '../actions/transactionActions';
+import { format } from 'date-fns';
 
 const DetailsDisplay = () => {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const DetailsDisplay = () => {
   // const { filtered, sucess: sucessFiltered } = useSelector(
   //   (state) => state.transactionsFilteredList
   // );
-  const { entries, error, loading, year } = useSelector(
+  const { entries, error, loading } = useSelector(
     (state) => state.transactionsList
   );
   const { success: successAdd } = useSelector((state) => state.transactionAdd);
@@ -26,8 +27,6 @@ const DetailsDisplay = () => {
   const { success: successEdit } = useSelector(
     (state) => state.transactionEdit
   );
-
-  console.log('entries', entries);
 
   useEffect(() => {
     dispatch(listEntries());
@@ -67,13 +66,14 @@ const DetailsDisplay = () => {
   //   mapObject (group ('month')) (group ('year') (input))
   // *******************************************************************
 
-  // const entriesByYearMonth = entries.reduce((accumulator, item) => {
-  //   accumulator[item.year] = accumulator[item.year] || {};
-  //   accumulator[item.year][item.month] =
-  //     accumulator[item.year][item.month] || [];
-  //   accumulator[item.year][item.month].push(item);
-  //   return accumulator;
-  // }, {});
+  const entriesByYearMonth = entries.reduce((accumulator, item) => {
+    const itemYear = format(new Date(item.createdAt), 'yyyy');
+    const itemMonth = format(new Date(item.createdAt), 'MMMM');
+    accumulator[itemYear] = accumulator[itemYear] || {};
+    accumulator[itemYear][itemMonth] = accumulator[itemYear][itemMonth] || [];
+    accumulator[itemYear][itemMonth].push(item);
+    return accumulator;
+  }, {});
 
   // const entriesByYearMonthArr = Object.entries(entriesByYearMonth).sort(
   //   (a, b) => b[0] - a[0]
@@ -109,7 +109,7 @@ const DetailsDisplay = () => {
       <div className='details-display'>
         <DetailsDisplayItem
           // entries={entriesByYearMonthArr}
-          entries={entries}
+          entries={entriesByYearMonth}
           actionBtnClicked={actionBtnClicked}
           setActionsBtnClicked={setActionsBtnClicked}
           itemId={itemId}

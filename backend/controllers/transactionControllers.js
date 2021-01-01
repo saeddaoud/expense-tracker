@@ -30,7 +30,6 @@ export const getTransactions = async (req, res, next) => {
     startDate = new Date(currentYear, currentMonth, 1);
     endDate = new Date(currentYear, Number(currentMonth) + 1, 1);
   }
-  console.log(startDate.toLocaleString(), endDate.toLocaleString());
   // ex: if query include year=2020, then return all documents created between Jan 1st, 2020 12:00 am (inclusive) and Jan 1st, 2020 12:00 am (exclusive)
   // if ex: if query include year=2020 and month=11 (for Dec.), then return all documents created between Dec 1st, 2020 12:00 am (inclusive) and Jan 1st, 2021 12:00 am (exclusive)
   await Transaction.find({

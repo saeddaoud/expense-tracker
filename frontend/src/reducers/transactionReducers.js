@@ -23,7 +23,7 @@ import {
 } from '../constants.js/transactionConstants';
 
 export const transactionsListReducer = (
-  state = { entries: [], year: 'Year' },
+  state = { entries: [], year: 'Year', month: 'Month' },
   action
 ) => {
   const { type, payload } = action;
@@ -36,12 +36,13 @@ export const transactionsListReducer = (
         loading: false,
         success: true,
         entries: payload.entries,
-        year: payload.year,
+        year: payload.year ? payload.year : 'Year',
+        month: payload.month ? payload.month : 'Month',
       };
     case ENTRIES_LIST_FAIL:
       return { ...state, loading: false, error: payload };
     case ENTRIES_LIST_RESET:
-      return { entries: [], year: 'Year' };
+      return { entries: [], year: 'Year', month: 'Month' };
     default:
       return state;
   }

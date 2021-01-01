@@ -23,7 +23,6 @@ export const listEntries = (year = '', month = '') => async (
   getState
 ) => {
   try {
-    console.log(year, month);
     dispatch({ type: ENTRIES_LIST_REQUEST });
 
     const token = `Bearer ${getState().userLogin.userInfo.token}`;
@@ -39,8 +38,6 @@ export const listEntries = (year = '', month = '') => async (
         config
       );
 
-      console.log(1, data);
-
       dispatch({
         type: ENTRIES_LIST_SUCCESS,
         payload: {
@@ -54,13 +51,12 @@ export const listEntries = (year = '', month = '') => async (
         config
       );
 
-      console.log(2, data);
-
       dispatch({
         type: ENTRIES_LIST_SUCCESS,
         payload: {
           entries: data,
           year: year,
+          month: month,
         },
       });
     } else {
@@ -70,11 +66,8 @@ export const listEntries = (year = '', month = '') => async (
         type: ENTRIES_LIST_SUCCESS,
         payload: {
           entries: data,
-          year: year,
         },
       });
-
-      console.log(3, data);
     }
   } catch (error) {
     dispatch({
