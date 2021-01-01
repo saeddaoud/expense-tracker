@@ -26,7 +26,7 @@ body {
   background-repeat: no-repeat;
 }
 
-select {
+/* select {
   padding-left: 0.5rem;
   font-size: 1.3rem;
   font-family: inherit;
@@ -37,7 +37,7 @@ select {
 select:focus {
   outline: none;
   border: 1px solid black;
-}
+} */
 
 .page {
   width: 100%;
@@ -111,11 +111,22 @@ form {
 .btn {
   padding: 0.5rem;
   width: 100px;
+  height: 30px;
   display: block;
   font-size: 1.3rem;
   font-family: inherit;
   margin: 0 auto;
   cursor: pointer;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn-view {
+  background-color: rgba(6, 90, 146, 0.3);
+  border: 1px solid black;
+  width: 20%;
 }
 
 .wrapper {

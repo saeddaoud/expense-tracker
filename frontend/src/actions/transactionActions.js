@@ -22,6 +22,7 @@ export const listEntries = (year = '', month = '') => async (
   dispatch,
   getState
 ) => {
+  // console.log(year, month);
   try {
     dispatch({ type: ENTRIES_LIST_REQUEST });
 

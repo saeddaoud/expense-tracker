@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import './DropDownDate.css';
 
 const months = [
@@ -26,7 +26,10 @@ const DropDownDate = ({
   month,
   flexDirection = 'row',
   filter = false,
+  yearRef,
+  monthRef,
 }) => {
+  // console.log(yearRef, monthRef);
   const currentYear = new Date().getFullYear();
   const years = useMemo(() => {
     const yearsTemp = [];
@@ -38,10 +41,10 @@ const DropDownDate = ({
     return yearsTemp;
   }, [currentYear]);
 
-  useEffect(() => {
-    setMonth(months[0]);
-    setYear(years[0]);
-  }, [years, setYear, setMonth]);
+  // useEffect(() => {
+  //   setMonth(months[0]);
+  //   setYear(years[0]);
+  // }, [years, setYear, setMonth]);
 
   return (
     <div
@@ -55,7 +58,10 @@ const DropDownDate = ({
         <select
           name='year'
           value={year}
-          onChange={(e) => setYear(e.target.value)}
+          onChange={(e) => {
+            setYear(e.target.value);
+            yearRef.current = e.target.value;
+          }}
           className={filter ? 'filter' : ''}
         >
           {years.map((yearEl) => (
@@ -77,6 +83,7 @@ const DropDownDate = ({
           value={month}
           onChange={(e) => {
             setMonth(e.target.value);
+            monthRef.current = e.target.value;
           }}
           className={filter ? 'filter' : ''}
         >
@@ -92,6 +99,7 @@ const DropDownDate = ({
         </select>
         {monthErr && <div className='error'>{monthErr}</div>}{' '}
       </div>
+      {/* <button className='btn btn-view'>View</button> */}
     </div>
   );
 };

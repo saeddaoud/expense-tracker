@@ -46,7 +46,16 @@ const DetailsDisplayItem = ({
                       })
                       .map((entry) => {
                         return (
-                          <div className='details-display-item' key={entry._id}>
+                          <div
+                            className='details-display-item'
+                            key={entry._id}
+                            style={{
+                              color:
+                                entry.type === 'income'
+                                  ? 'rgb(33, 105, 33)'
+                                  : 'rgb(136, 30, 30)',
+                            }}
+                          >
                             <div className='item__date'>
                               {format(new Date(entry.createdAt), 'EEEEEE do')}
                             </div>

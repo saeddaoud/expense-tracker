@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { listEntries } from '../actions/transactionActions';
 import DetailsDisplay from '../components/DetailsDisplay';
@@ -8,27 +8,78 @@ import TotalDisplay from '../components/TotalDisplay';
 
 import './TransactionsScreen.css';
 
+const months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
+const monthsObj = {
+  January: '0',
+  February: '1',
+  March: '2',
+  April: '3',
+  May: '4',
+  June: '5',
+  July: '6',
+  August: '7',
+  September: '8',
+  October: '9',
+  November: '10',
+  December: '11',
+};
+
 const TransactionsScreen = ({ history }) => {
   const dispatch = useDispatch();
 
-  const { year: yearList, month: monthList } = useSelector(
-    (state) => state.transactionsList
+  // const { year: yearList, month: monthList } = useSelector(
+  //   (state) => state.transactionsList
+  // );
+
+  const yearRef = useRef(new Date().getFullYear() + '');
+  const monthRef = useRef(months[new Date().getMonth()] + '');
+
+  console.log(yearRef.current, monthRef.current);
+
+  const [year, setYear] = useState(yearRef.current);
+  const [month, setMonth] = useState(monthRef.current);
+
+  const { success: successEdit } = useSelector(
+    (state) => state.transactionEdit
   );
-
-  const [year, setYear] = useState(yearList);
-  const [month, setMonth] = useState(monthList);
-
+  const { success: successDelete } = useSelector(
+    (state) => state.transactionDelete
+  );
   const { userInfo: userInfoLogin } = useSelector((state) => state.userLogin);
   const { userInfo: userInfoRegister } = useSelector(
     (state) => state.userRegister
   );
 
+  // console.log(year, months[month], monthsObj[month]);
+
   useEffect(() => {
+    console.log(yearRef, monthRef);
     if (!userInfoLogin && !userInfoRegister) history.push('/login');
-    dispatch(
-      listEntries(year !== 'Year' ? year : '', month !== 'Month' ? month : '')
-    );
-  }, [userInfoLogin, userInfoRegister, history, year, month, dispatch]);
+    dispatch(listEntries(yearRef.current, monthsObj[monthRef.current]));
+  }, [
+    userInfoLogin,
+    userInfoRegister,
+    history,
+    year,
+    month,
+    dispatch,
+    successEdit,
+    successDelete,
+  ]);
   return (
     <div className='page page--transactions'>
       <div className='hello'>
@@ -50,6 +101,8 @@ const TransactionsScreen = ({ history }) => {
         setMonth={setMonth}
         // flexDirection='column'
         filter={true}
+        yearRef={yearRef}
+        monthRef={monthRef}
       />
       <DetailsDisplay />
     </div>

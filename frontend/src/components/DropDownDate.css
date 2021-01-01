@@ -1,7 +1,7 @@
 .dropdown-date {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   margin-top: 2rem;
 }
@@ -17,12 +17,25 @@
 }
 
 .years {
-  position: relative;
-  width: 100%;
+  /* position: relative; */
+  width: 40%;
 }
 .months {
-  position: relative;
+  /* position: relative; */
+  width: 40%;
+}
+
+select {
+  padding-left: 0.5rem;
+  font-size: 1.3rem;
+  font-family: inherit;
   width: 100%;
+  height: 30px;
+}
+
+select:focus {
+  outline: none;
+  border: 1px solid black;
 }
 
 .error {
@@ -34,7 +47,7 @@
 
 select.filter {
   background-color: rgba(6, 90, 146, 0.3);
-  width: 80% !important;
+  width: 100% !important;
   /* font-size: 1.3rem; */
 }
 
