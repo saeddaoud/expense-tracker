@@ -57,7 +57,7 @@ const DetailsDisplayItem = ({
                             }}
                           >
                             <div className='item__date'>
-                              {format(new Date(entry.createdAt), 'EEEEEE do')}
+                              {format(new Date(entry.createdAt), 'EEEE, do')}
                             </div>
                             <div className='item__title'>{entry.title}</div>
                             <div className='right'>

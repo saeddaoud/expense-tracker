@@ -59,6 +59,8 @@ const TransactionsScreen = ({ history }) => {
   const { success: successDelete } = useSelector(
     (state) => state.transactionDelete
   );
+  const { success: successAdd } = useSelector((state) => state.transactionAdd);
+
   const { userInfo: userInfoLogin } = useSelector((state) => state.userLogin);
   const { userInfo: userInfoRegister } = useSelector(
     (state) => state.userRegister
@@ -67,18 +69,20 @@ const TransactionsScreen = ({ history }) => {
   // console.log(year, months[month], monthsObj[month]);
 
   useEffect(() => {
-    console.log(yearRef, monthRef);
     if (!userInfoLogin && !userInfoRegister) history.push('/login');
     dispatch(listEntries(yearRef.current, monthsObj[monthRef.current]));
   }, [
     userInfoLogin,
     userInfoRegister,
     history,
-    year,
-    month,
+    // year,
+    // month,
     dispatch,
     successEdit,
     successDelete,
+    successAdd,
+    yearRef.current,
+    monthRef.current,
   ]);
   return (
     <div className='page page--transactions'>

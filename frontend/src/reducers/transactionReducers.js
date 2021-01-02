@@ -22,10 +22,7 @@ import {
   ENTRIES_LIST_RESET,
 } from '../constants.js/transactionConstants';
 
-export const transactionsListReducer = (
-  state = { entries: [], year: 'Year', month: 'Month' },
-  action
-) => {
+export const transactionsListReducer = (state = { entries: [] }, action) => {
   const { type, payload } = action;
   switch (type) {
     case ENTRIES_LIST_REQUEST:
@@ -36,13 +33,11 @@ export const transactionsListReducer = (
         loading: false,
         success: true,
         entries: payload.entries,
-        year: payload.year ? payload.year : 'Year',
-        month: payload.month ? payload.month : 'Month',
       };
     case ENTRIES_LIST_FAIL:
       return { ...state, loading: false, error: payload };
     case ENTRIES_LIST_RESET:
-      return { entries: [], year: 'Year', month: 'Month' };
+      return { entries: [] };
     default:
       return state;
   }

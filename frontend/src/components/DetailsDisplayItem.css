@@ -62,11 +62,13 @@
 .item__title {
   width: 33%;
   text-align: left;
+  padding-left: 3rem;
 }
 
 .item__date {
   width: 33%;
   text-align: left;
+  /* margin-right: 2rem; */
 }
 
 .options-btn {

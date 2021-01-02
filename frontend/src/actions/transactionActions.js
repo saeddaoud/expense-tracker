@@ -26,7 +26,10 @@ export const listEntries = (year = '', month = '') => async (
   try {
     dispatch({ type: ENTRIES_LIST_REQUEST });
 
-    const token = `Bearer ${getState().userLogin.userInfo.token}`;
+    const token = getState().userLogin.userInfo
+      ? `Bearer ${getState().userLogin.userInfo.token}`
+      : getState().userRegister.userInfo &&
+        `Bearer ${getState().userRegister.userInfo.token}`;
 
     const config = {
       headers: {
@@ -43,7 +46,6 @@ export const listEntries = (year = '', month = '') => async (
         type: ENTRIES_LIST_SUCCESS,
         payload: {
           entries: data,
-          year: year,
         },
       });
     } else if (year && month) {
@@ -56,8 +58,6 @@ export const listEntries = (year = '', month = '') => async (
         type: ENTRIES_LIST_SUCCESS,
         payload: {
           entries: data,
-          year: year,
-          month: month,
         },
       });
     } else {

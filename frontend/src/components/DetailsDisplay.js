@@ -28,9 +28,9 @@ const DetailsDisplay = () => {
     (state) => state.transactionEdit
   );
 
-  useEffect(() => {
-    dispatch(listEntries());
-  }, [successAdd, successDelete, successEdit, dispatch]);
+  // useEffect(() => {
+  //   dispatch(listEntries());
+  // }, [successAdd, successDelete, successEdit, dispatch]);
 
   // const incomeEntries = entries.filter((el) => el.type === 'income');
   // const expenseEntries = entries.filter((el) => el.type === 'expense');

@@ -191,7 +191,7 @@ h1 {
     font-size: 1.7rem;
   }
   .btn {
-    padding: 1rem;
+    /* padding: 1rem; */
     font-size: 1.5rem;
   }
 }
