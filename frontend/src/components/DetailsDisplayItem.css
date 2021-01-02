@@ -4,6 +4,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  /* color: rgb(212, 208, 208); */
   border: 1px solid black;
   box-shadow: 5px 8px 5px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
@@ -33,11 +34,37 @@
 .details-display-item {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  /* justify-content: flex-start; */
   align-items: center;
   font-size: 1.5rem;
   padding: 1rem;
+  margin: 1rem auto;
+  /* border-radius: 10px; */
+  /* border: 1px solid black;
+  box-shadow: 5px 8px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 10px; */
+
   /* font-weight: bold; */
+}
+
+.details-display-item:not(:last-child) {
+  border-bottom: 1px solid black;
+}
+/* .details-display-item:nth-child(odd) {
+  background: rgb(7, 113, 184);
+}
+
+.details-display-item:nth-child(even) {
+  background: rgba(6, 90, 146, 0.8);
+} */
+
+.item-details {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background: rgb(7, 113, 184); */
 }
 
 .details-display-item .income {
@@ -62,13 +89,19 @@
 .item__title {
   width: 33%;
   text-align: left;
-  padding-left: 3rem;
+  /* padding-left: 3rem; */
 }
 
 .item__date {
-  width: 33%;
+  width: 100%;
   text-align: left;
+  color: rgb(71, 70, 70);
+  font-size: 1rem;
+  margin-top: 0.1rem;
+  /* margin-left: 0.3rem; */
+  font-style: italic;
   /* margin-right: 2rem; */
+  /* background: rgba(6, 90, 146, 0.8); */
 }
 
 .options-btn {
@@ -131,6 +164,9 @@
   .entry-month > span {
     font-size: 1.6rem;
   }
+  .item__date {
+    font-size: 1.2rem;
+  }
 }
 
 /* Large Screens */
@@ -146,6 +182,9 @@
   .entry-month > span {
     font-size: 1.7rem;
   }
+  .item__date {
+    font-size: 1.3rem;
+  }
 }
 
 /* Extra Large Screens */
@@ -157,5 +196,8 @@
   .entry-year > span,
   .entry-month > span {
     font-size: 1.8rem;
+  }
+  .item__date {
+    font-size: 1.4rem;
   }
 }

@@ -33,11 +33,11 @@ const DetailsDisplayItem = ({
         {Object.entries(entries).map((yearEntries) => {
           return (
             <div className='entry-year' key={`${yearEntries[0]}-year`}>
-              <span>{yearEntries[0]}</span>
+              {/* <span>{yearEntries[0]}</span> */}
               {Object.entries(yearEntries[1]).map((monthEntries) => {
                 return (
                   <div className='entry-month' key={`${monthEntries[0]}-month`}>
-                    <span>{monthEntries[0]}</span>
+                    {/* <span>{monthEntries[0]}</span> */}
                     {monthEntries[1]
                       .sort((a, b) => {
                         const aDate = new Date(a.createdAt);
@@ -56,52 +56,57 @@ const DetailsDisplayItem = ({
                                   : 'rgb(136, 30, 30)',
                             }}
                           >
-                            <div className='item__date'>
-                              {format(new Date(entry.createdAt), 'EEEE, do')}
-                            </div>
-                            <div className='item__title'>{entry.title}</div>
-                            <div className='right'>
-                              <div
-                                className={
-                                  entry.type === 'income'
-                                    ? 'item__amount income'
-                                    : 'item__amount expense'
-                                }
-                              >
-                                ${entry.amount}
-                              </div>
-                              <div className='actions'>
+                            <div className='item-details'>
+                              <div className='item__title'>{entry.title}</div>
+                              <div className='right'>
                                 <div
-                                  className='options-btn'
-                                  onClick={() => {
-                                    setActionsBtnClicked(!actionBtnClicked);
-                                    setItemId(entry._id);
-                                  }}
+                                  className={
+                                    entry.type === 'income'
+                                      ? 'item__amount income'
+                                      : 'item__amount expense'
+                                  }
                                 >
-                                  <i className='fas fa-ellipsis-v'></i>
+                                  ${entry.amount}
                                 </div>
-                                {actionBtnClicked &&
-                                  `${entry._id}` === `${itemId}` && (
-                                    <div className='actions__menu'>
-                                      <ul>
-                                        <li
-                                          onClick={() =>
-                                            handleEditClick(entry._id)
-                                          }
-                                        >
-                                          Edit
-                                        </li>
-                                        <li
-                                          onClick={() =>
-                                            handleDeleteClick(entry._id)
-                                          }
-                                        >
-                                          Delete
-                                        </li>
-                                      </ul>
-                                    </div>
-                                  )}
+                                <div className='actions'>
+                                  <div
+                                    className='options-btn'
+                                    onClick={() => {
+                                      setActionsBtnClicked(!actionBtnClicked);
+                                      setItemId(entry._id);
+                                    }}
+                                  >
+                                    <i className='fas fa-ellipsis-v'></i>
+                                  </div>
+                                  {actionBtnClicked &&
+                                    `${entry._id}` === `${itemId}` && (
+                                      <div className='actions__menu'>
+                                        <ul>
+                                          <li
+                                            onClick={() =>
+                                              handleEditClick(entry._id)
+                                            }
+                                          >
+                                            Edit
+                                          </li>
+                                          <li
+                                            onClick={() =>
+                                              handleDeleteClick(entry._id)
+                                            }
+                                          >
+                                            Delete
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    )}
+                                </div>
                               </div>
+                            </div>
+                            <div className='item__date'>
+                              {format(
+                                new Date(entry.createdAt),
+                                'EEEE, MMMM do, yyyy, HH:mm:ss'
+                              )}
                             </div>
                           </div>
                         );

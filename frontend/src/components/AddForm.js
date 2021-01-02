@@ -90,8 +90,8 @@ const AddForm = ({ setAddClicked }) => {
             type: entryType,
             title,
             amount,
-            year,
-            month,
+            // year,
+            // month,
           })
         );
         dispatch({ type: FETCH_ENRTY_RESET });
@@ -101,8 +101,8 @@ const AddForm = ({ setAddClicked }) => {
             type: entryType,
             title,
             amount,
-            year,
-            month,
+            // year,
+            // month,
           })
         );
       }

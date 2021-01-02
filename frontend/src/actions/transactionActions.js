@@ -26,10 +26,17 @@ export const listEntries = (year = '', month = '') => async (
   try {
     dispatch({ type: ENTRIES_LIST_REQUEST });
 
-    const token = getState().userLogin.userInfo
-      ? `Bearer ${getState().userLogin.userInfo.token}`
-      : getState().userRegister.userInfo &&
-        `Bearer ${getState().userRegister.userInfo.token}`;
+    let token;
+
+    console.log(getState().userLogin.userInfo);
+    console.log(getState().userRegister.userInfo);
+
+    if (getState().userLogin.userInfo) {
+      token = `Bearer ${getState().userLogin.userInfo.token}`;
+    }
+    if (getState().userRegister.userInfo) {
+      token = `Bearer ${getState().userRegister.userInfo.token}`;
+    }
 
     const config = {
       headers: {
@@ -119,7 +126,19 @@ export const addEntry = (entry) => async (dispatch, getState) => {
   try {
     dispatch({ type: ADD_ENRTY_REQUEST });
 
-    const token = `Bearer ${getState().userLogin.userInfo.token}`;
+    // const token = `Bearer ${getState().userLogin.userInfo.token}`;
+
+    let token;
+
+    console.log(getState().userLogin.userInfo);
+    console.log(getState().userRegister.userInfo);
+
+    if (getState().userLogin.userInfo) {
+      token = `Bearer ${getState().userLogin.userInfo.token}`;
+    }
+    if (getState().userRegister.userInfo) {
+      token = `Bearer ${getState().userRegister.userInfo.token}`;
+    }
 
     const config = {
       headers: {
