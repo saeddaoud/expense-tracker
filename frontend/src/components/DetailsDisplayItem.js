@@ -105,9 +105,18 @@ const DetailsDisplayItem = ({
                             <div className='item__date'>
                               {format(
                                 new Date(entry.createdAt),
-                                'EEEE, MMMM do, yyyy, HH:mm:ss'
+                                'EEEE, MMMM do, yyyy'
                               )}
                             </div>
+                            {/* {entry.createdAt !== entry.updatedAt && (
+                              <div className='item__date'>
+                                <strong>Edited at:</strong>{' '}
+                                {format(
+                                  new Date(entry.updatedAt),
+                                  'EEEE, MMMM do, yyyy, HH:mm:ss'
+                                )}
+                              </div>
+                            )} */}
                           </div>
                         );
                       })}
