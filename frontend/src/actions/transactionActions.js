@@ -28,9 +28,6 @@ export const listEntries = (year = '', month = '') => async (
 
     let token;
 
-    console.log(getState().userLogin.userInfo);
-    console.log(getState().userRegister.userInfo);
-
     if (getState().userLogin.userInfo) {
       token = `Bearer ${getState().userLogin.userInfo.token}`;
     }
@@ -130,9 +127,6 @@ export const addEntry = (entry) => async (dispatch, getState) => {
 
     let token;
 
-    console.log(getState().userLogin.userInfo);
-    console.log(getState().userRegister.userInfo);
-
     if (getState().userLogin.userInfo) {
       token = `Bearer ${getState().userLogin.userInfo.token}`;
     }
@@ -168,7 +162,14 @@ export const editEntry = (entry) => async (dispatch, getState) => {
   try {
     dispatch({ type: EDIT_ENRTY_REQUEST });
 
-    const token = `Bearer ${getState().userLogin.userInfo.token}`;
+    let token;
+
+    if (getState().userLogin.userInfo) {
+      token = `Bearer ${getState().userLogin.userInfo.token}`;
+    }
+    if (getState().userRegister.userInfo) {
+      token = `Bearer ${getState().userRegister.userInfo.token}`;
+    }
 
     const config = {
       headers: {
@@ -202,7 +203,14 @@ export const fetchEntry = (entryId) => async (dispatch, getState) => {
   try {
     dispatch({ type: FETCH_ENRTY_REQUEST });
 
-    const token = `Bearer ${getState().userLogin.userInfo.token}`;
+    let token;
+
+    if (getState().userLogin.userInfo) {
+      token = `Bearer ${getState().userLogin.userInfo.token}`;
+    }
+    if (getState().userRegister.userInfo) {
+      token = `Bearer ${getState().userRegister.userInfo.token}`;
+    }
 
     const config = {
       headers: {
@@ -231,7 +239,14 @@ export const deleteEntry = (entryId) => async (dispatch, getState) => {
   try {
     dispatch({ type: DELETE_ENRTY_REQUEST });
 
-    const token = `Bearer ${getState().userLogin.userInfo.token}`;
+    let token;
+
+    if (getState().userLogin.userInfo) {
+      token = `Bearer ${getState().userLogin.userInfo.token}`;
+    }
+    if (getState().userRegister.userInfo) {
+      token = `Bearer ${getState().userRegister.userInfo.token}`;
+    }
 
     const config = {
       headers: {

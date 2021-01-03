@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import DetailsDisplayItem from './DetailsDisplayItem';
 import Spinner from '../components/Spinner';
 import Message from '../components/Message';
 
 import './DetailsDisplay.css';
-import { listEntries } from '../actions/transactionActions';
 import { format } from 'date-fns';
 
 const DetailsDisplay = () => {
-  const dispatch = useDispatch();
   const [actionBtnClicked, setActionsBtnClicked] = useState(false);
   const [itemId, setItemId] = useState('');
   // const { filtered, year } = useSelector((state) => state.entriesList);
@@ -19,13 +17,6 @@ const DetailsDisplay = () => {
   // );
   const { entries, error, loading } = useSelector(
     (state) => state.transactionsList
-  );
-  const { success: successAdd } = useSelector((state) => state.transactionAdd);
-  const { success: successDelete } = useSelector(
-    (state) => state.transactionDelete
-  );
-  const { success: successEdit } = useSelector(
-    (state) => state.transactionEdit
   );
 
   // useEffect(() => {

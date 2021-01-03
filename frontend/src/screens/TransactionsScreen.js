@@ -48,8 +48,6 @@ const TransactionsScreen = ({ history }) => {
   const yearRef = useRef(new Date().getFullYear() + '');
   const monthRef = useRef(months[new Date().getMonth()] + '');
 
-  console.log(yearRef.current, monthRef.current);
-
   const [year, setYear] = useState(yearRef.current);
   const [month, setMonth] = useState(monthRef.current);
 

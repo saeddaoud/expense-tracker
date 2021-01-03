@@ -15,7 +15,7 @@ const HomeScreen = ({ history }) => {
         <h1>Welcome to EXTRA</h1>
         <p>
           <strong>
-            <em>Be in control of your finances.</em>{' '}
+            <em>Be in control of your expenses.</em>{' '}
           </strong>
         </p>
       </div>
