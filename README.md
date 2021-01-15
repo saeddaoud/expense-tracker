@@ -3,7 +3,7 @@
 ![](https://github.com/saeddaoud/expense-tracker/blob/main/images/home.png)
 
 ### This is a MERN (MongoDB, Express, React and Node) fullstack web application, that allows users to
-1. Create an account to associate transactions with that account.
+1. Create an account to associate transactions with that account, and login using the email and password credentials afterwards to view previous transactions and/or add new ones.
 
 ![](https://github.com/saeddaoud/expense-tracker/blob/main/images/register.png)
 
