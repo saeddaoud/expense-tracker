@@ -9,7 +9,7 @@
 
 ![](https://github.com/saeddaoud/expense-tracker/blob/main/images/login.png)
 
-2. Add transactions (expense or income), and diplay the total expenses, income and total balance after each transaction.
+2. Add transactions (expense or income), and update the total expenses or income as well as the total balance after each transaction.
 
 ![](https://github.com/saeddaoud/expense-tracker/blob/main/images/add_transaction.png)
 
