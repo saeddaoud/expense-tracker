@@ -9,17 +9,15 @@
 
 ![](https://github.com/saeddaoud/expense-tracker/blob/main/login.png)
 
-2. Add interactions (expense or income).
+2. Add interactions (expense or income), and diplay the total expenses, income and total balance after each interaction.
 
 ![](https://github.com/saeddaoud/expense-tracker/blob/main/add_transaction.png)
 
-3. View the total expenses, income, and the total balance.
-
-4. Filter interactions by year and month to view previous interactions.
+3. Filter interactions by year and month to view previous interactions.
 
 ![](https://github.com/saeddaoud/expense-tracker/blob/main/filter_transactions.png)
 
-3. Edit and/or delete interactions.
+4. Edit and/or delete interactions.
 
 ![](https://github.com/saeddaoud/expense-tracker/blob/main/edit_delete_transaction.png)
 
