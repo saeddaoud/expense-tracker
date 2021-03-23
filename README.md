@@ -1,6 +1,6 @@
 # EXTRA: EXpense TRAcker 
 
-### Click here for the live [site](https://extra-full.herokuapp.com/)
+### Click [here](https://extra-full.herokuapp.com/) for the live website
 
 ![](https://github.com/saeddaoud/expense-tracker/blob/main/images/home.png)
 
